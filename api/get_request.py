@@ -5,6 +5,7 @@ from models import *
 
 @api.route('/galary', methods=["GET"])
 def GetGalary():
+    # на вход ничего не надо
     galary = Stuff.query.all()
     resp = {
         "date": []
@@ -16,6 +17,7 @@ def GetGalary():
             'name': el.name,
             'foto': el.foto,
             'price': el.price,
+            'size': el.size,
             'mass': el.mass,
             'description': el.description,
             'producer': el.producer
@@ -27,6 +29,7 @@ def GetGalary():
 @api.route('/cart', methods=["GET"])
 @jwt_required()
 def GetCart():
+    # на вход ничего не надо
     user = get_jwt()["sub"]
     if GetRole(user) == 'producer':
         return 'вы продавец, у вас нет корзины', 401
@@ -47,6 +50,7 @@ def GetCart():
                 'name': item.name,
                 'foto': item.foto,
                 'price': item.price,
+                'size': item.size,
                 'mass': item.mass,
                 'description': item.description,
                 'producer': item.producer
@@ -57,6 +61,7 @@ def GetCart():
 
 @api.route('/pvz/<producer>',methods=['GET'])
 def GetPVZ(producer):
+    # на вход название продовца
     pvz = PVZ.query.filter_by(producer=producer).all()
     resp = {
         "date": []

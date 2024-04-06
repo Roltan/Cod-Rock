@@ -5,15 +5,22 @@ from models import *
 
 # автаризация
 @api.route('/login', methods=['POST'])
-def Test():
+def Login():
     name = request.json.get('name')
     password = request.json.get('password')
 
-    user = User.query.filter_by(name=name).first()
-    if user is None:
-        return "неверный логин", 401
-    if not check_password_hash(user.password, password):
-        return "неверный пароль", 401
+    if GetRole(name)=='user':
+        user = User.query.filter_by(name=name).first()
+        if user is None:
+            return "неверный логин", 401
+        if not check_password_hash(user.password, password):
+            return "неверный пароль", 401
+    elif GetRole(name)=='producer':
+        user = Producer.query.filter_by(name=name).first()
+        if user is None:
+            return "неверный логин", 401
+        if not check_password_hash(user.password, password):
+            return "неверный пароль", 401
 
     token = create_access_token(identity=name)
     return {'access_token':token}
@@ -73,7 +80,11 @@ def Refresh_expiring_jwts(resp):
 @jwt_required()
 def My_profile():
     name = get_jwt()["sub"]
-    role, user = GetRole(name)
+    role = GetRole(name)
+    if role == 'user':
+        user = User.query.filter_by(name=name).first()
+    elif role == 'producer':
+        user = Producer.query.filter_by(name=name).first()
 
     resp = {
         "id": user.id,

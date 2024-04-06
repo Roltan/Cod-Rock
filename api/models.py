@@ -23,6 +23,7 @@ class Stuff(db.Model):
     name = db.Column(db.String(256), nullable=False)
     foto = db.Column(db.String(256), nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    size = db.Column(db.String(256), nullable=False)
     mass = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     producer = db.Column(db.Integer, nullable=False)
@@ -83,4 +84,4 @@ def GetRole(name):
         role = 'producer'
     else:
         role = 'user'
-    return role, user
+    return role

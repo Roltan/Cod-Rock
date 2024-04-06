@@ -4,6 +4,7 @@ from core import *
 
 import authorization
 import get_request
+import put_request
 
 # создать бд
 with api.app_context():
