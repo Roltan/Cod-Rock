@@ -2,11 +2,12 @@
 
 from core import *
 
-import route
+import authorization
+import get_request
 
 # создать бд
-# with api.app_context():
-#     db.create_all()
+with api.app_context():
+    db.create_all()
 
 if __name__ == '__main__':
-    api.run(debug=True)
+    api.run(debug=True, port=3000)

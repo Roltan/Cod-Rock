@@ -1,7 +1,7 @@
 # функции по запросам
 
 from core import *
-from models import User
+from models import *
 
 # автаризация
 @api.route('/login', methods=['POST'])
@@ -23,13 +23,24 @@ def Test():
 def Register():
     name = request.json.get('name')
     password = request.json.get('password')
+    role = request.json.get('role')
+
+    users = User.query.filter_by(name=name).first()
+    producer = Producer.query.filter_by(name=name).first()
+    if users or producer:
+        return 'такой пользователь уже зарегестрирован', 401
     password = generate_password_hash(password)
 
-    user = User(name=name, password=password)
-    db.session.add(user)
+    if role == 'user':
+        user = User(name=name, password=password)
+        db.session.add(user)
+    elif role == 'producer':
+        producer = Producer(name=name, password=password)
+        db.session.add(producer)
     db.session.commit()
 
-    return 'зарегестрирован'
+    token = create_access_token(identity=name)
+    return {'access_token':token}
 
 # выход из акаунта
 @api.route('/logout', methods=["POST"])
@@ -55,14 +66,18 @@ def Refresh_expiring_jwts(resp):
 
     except (RuntimeError, KeyError):
         return resp
-    
-@api.route('/user/<name>')
+
+# тестовый запрос
+# вывод одного пользователя
+@api.route('/user')
 @jwt_required()
-def My_profile(name):
-    user = User.query.filter_by(name=name).first()
+def My_profile():
+    name = get_jwt()["sub"]
+    role, user = GetRole(name)
 
     resp = {
         "id": user.id,
-        "name": user.name
+        "name": user.name,
+        "role": role
     }
     return resp, 200
