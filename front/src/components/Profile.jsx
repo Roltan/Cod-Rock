@@ -12,7 +12,7 @@ const Profile = (props) => {
         try {
             const req = await axios({
                 method: "GET",
-                url:`http://127.0.0.1:3001/user/${email}`, 
+                url:`http://127.0.0.1:3001/user`, 
                 headers: {
                   Authorization: 'Bearer ' + props.token
                 }

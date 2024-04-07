@@ -5,6 +5,9 @@ import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Registration from "./pages/Registration";
 
+import AddStuff from "./pages/AddStuff";
+import Store from "./pages/AddStore";
+
 function App() {
   const {token, removeToken, setToken} = useToken()
 
@@ -12,18 +15,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header token={removeToken} />
-        {!token && token!=="" && token!==undefined?
-        <Login setToken={setToken}/>
-        :(
-          <>
-            <Routes>
-              <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
-            </Routes>
-          </>
-        )
-
-        }
-        <Registration />
+        <Routes>
+          <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
+          <Route path="/login" element={<Login setToken={token} token={token} />} />
+          <Route path="/register" element={<Registration token={token} />} />
+          <Route path="/addstuff" element={<AddStuff token={token} />} />
+          <Route path="/addstore" element={<Store token={token} />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios  from 'axios'
 import {useNavigate} from 'react-router-dom'
+import useToken from '../../components/useToken'
 
 const Login = (props) => {
+    const {token, setToken} = useToken()
     const [isLogin, setIsLogin] = useState(false)
     const [getJwt, setGetJwt] = useState({})
     const [loginForm, setLoginForm] = useState({
@@ -24,7 +26,7 @@ const Login = (props) => {
         .then((response) =>{
             setGetJwt(response.data.access_token)
             setIsLogin(true)
-            props.setToken(response.data.access_token)
+            setToken(response.data.access_token)
             localStorage.setItem('email', loginForm.name)
             Navigate('/profile')
         }).catch((error) => {
@@ -62,6 +64,10 @@ const Login = (props) => {
 
     return ( 
         <>
+        {!token && token!=="" && token!==undefined?
+            <div> Вы не авторизованы</div>
+        : <div>Вы  авторизованы</div>
+        }
         <form>
             <b>{isLogin ? 'Вы авторизованы' : 'Вы не авторизованы'}</b>
             <input type="text" value={loginForm.email} onChange={handleChange} placeholder="Логин" name='name'/>

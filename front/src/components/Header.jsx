@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Header = (props) => {
     const Navigate = useNavigate();
@@ -11,6 +11,7 @@ const Header = (props) => {
         })
         .then((response) => {
             props.token()
+            console.log(props.token())
             localStorage.removeItem('email')
             Navigate("/");
         }).catch((error) => {
@@ -28,7 +29,15 @@ const Header = (props) => {
         <div>
             Шапка сайта 
             {!logged ?
-                <button>Войти</button>:
+            <>
+                <Link to='/login'>
+                    <button>Войти</button>
+                </Link
+                ><Link to='/register'>
+                    <button>Зарегаться</button>
+                </Link>
+            </>
+            :
                 <button onClick={logMeOut}>Выйти</button>}
                 
         </div>
