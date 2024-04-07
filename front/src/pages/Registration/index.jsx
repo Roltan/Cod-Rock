@@ -27,10 +27,6 @@ const Registration = () => {
     
     function btnRegistration(event){
         // try {
-            const obj = {
-                
-            }
-            console.log(obj)
         //     const req = await axios.post('http://127.0.0.1:3001/register', obj)
         //     console.log(obj)
         //     req.then((response)=> {

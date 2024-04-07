@@ -3,6 +3,7 @@ import axios from 'axios';
 import {v4 as uuidv4} from 'uuid';
 
 const AddStuff = (props) => {
+    const[isAdded, setIsAdded] = React.useState(false)
     const[getUrl, setGetUrl] = React.useState({
        name: "" 
     })
@@ -15,6 +16,7 @@ const AddStuff = (props) => {
         producer: ""
     })
     function handleChange(event){
+  
         const {value, name} = event.target
         setStuff(prev => ({
             ...prev, [name]: value
@@ -50,6 +52,7 @@ const AddStuff = (props) => {
     .then((response) =>{
         if(response.data === 'создал'){
             console.log('создал')
+            setIsAdded(true)
         }
     }).catch((error) => {
         if(error.response){
@@ -80,6 +83,8 @@ const AddStuff = (props) => {
             <textarea cols="30" rows="10" name='description'  onChange={handleChange}  value={stuff.description}></textarea>
             <input type="text" placeholder="продавец" name='producer'  onChange={handleChange}  value={stuff.producer}/>
             <button onClick={btnAdd}>Добавить товар</button>
+            {isAdded ? 
+                <div>'Товар добавлен'</div> : ''}
         </div>
      );
 }

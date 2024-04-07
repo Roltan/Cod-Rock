@@ -7,6 +7,7 @@ import Registration from "./pages/Registration";
 
 import AddStuff from "./pages/AddStuff";
 import Store from "./pages/AddStore";
+import AddPvz from "./pages/AddPvz";
 
 function App() {
   const {token, removeToken, setToken} = useToken()
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Registration token={token} />} />
           <Route path="/addstuff" element={<AddStuff token={token} />} />
           <Route path="/addstore" element={<Store token={token} />} />
+          <Route path="/addpvz" element={<AddPvz token={token} />} />
         </Routes>
       </BrowserRouter>
     </div>

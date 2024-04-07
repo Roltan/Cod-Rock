@@ -32,13 +32,24 @@ const Header = (props) => {
             <>
                 <Link to='/login'>
                     <button>Войти</button>
-                </Link
-                ><Link to='/register'>
+                </Link>
+                <Link to='/register'>
                     <button>Зарегаться</button>
                 </Link>
             </>
             :
-                <button onClick={logMeOut}>Выйти</button>}
+            <>
+                <button onClick={logMeOut}>Выйти</button>
+                <Link to='/addstuff'>
+                    <button>добавить товар</button>
+                </Link>
+                <Link to='/addstore'>
+                    <button>добавить склад</button>
+                </Link>
+                <Link to='/addpvz'>
+                    <button>добавить пвз</button>
+                </Link>
+            </>}
                 
         </div>
      );
