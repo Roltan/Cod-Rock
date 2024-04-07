@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import {v4 as uuidv4} from 'uuid';
 
 const AddStuff = (props) => {
     const[getUrl, setGetUrl] = React.useState({
@@ -22,6 +23,9 @@ const AddStuff = (props) => {
     }
 
     function btnAdd(event){
+        const get = getUrl.name
+        const afterDot = get.substr(get.indexOf('.'));
+        const idImg = uuidv4()
         // const obj = stuff
         // console.log(stuff)
         // const req = await axios.put('http://127.0.0.1:3001/addStuff', obj)
@@ -35,7 +39,7 @@ const AddStuff = (props) => {
         },
         data:{
             "name": stuff.name,
-            "foto": getUrl.name,
+            "foto": idImg + afterDot,
             "price": Number(stuff.price),
             "size": Number(stuff.size),
             "mass": Number(stuff.mass),
@@ -66,7 +70,9 @@ const AddStuff = (props) => {
                     name: filename
                 })
                 }}
-            }/>
+            }
+            accept="image/png, image/gif, image/jpeg, image/jpg"
+            />
             <input type="text" placeholder="цена" name='price'  onChange={handleChange} value={stuff.price}/>
             <input type="text" placeholder="Размеры" name='size'  onChange={handleChange}  value={stuff.size}/>
             <input type="text" placeholder="масса в кг" name='mass'  onChange={handleChange}  value={stuff.mass}/>
