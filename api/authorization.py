@@ -90,24 +90,6 @@ def Logout():
     unset_jwt_cookies(resp)
     return resp
 
-# обновление токенов если у них истикает время
-@api.after_request
-def Refresh_expiring_jwts(resp):
-    try:
-        exp_timestamp = get_jwt()["exp"]
-        now = datetime.now()
-        target_tamestamp = datetime.timestamp(now + timedelta(minutes=30))
-        if target_tamestamp > exp_timestamp:
-            access_token = create_access_token(identity=get_jwt_identity())
-            date = resp.get.json()
-            if type(date) is dict:
-                date["access_token"]=access_token
-                resp.date = json.damps(date)
-        return resp
-
-    except (RuntimeError, KeyError):
-        return resp
-
 # тестовый запрос
 # вывод одного пользователя
 @api.route('/user')

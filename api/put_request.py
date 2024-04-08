@@ -16,7 +16,8 @@ def AddStuf():
 
     try:
         name = request.json["name"]
-        photo = request.json["photo"]
+        photoName = request.json["photoName"]
+        photoFile = request.files['photo']
         price = request.json["price"]
         size = request.json["size"]
         mass = request.json["mass"]
@@ -28,9 +29,12 @@ def AddStuf():
         }
         return resp, 401
 
-    photo = './public/img/stuff/'+photo
+    path = '../front/public/img/stuff/' + photoFile.filename
+    photoFile.save(path)
+
+    photoName = './public/img/stuff/'+photoName
     producer = Producer.query.filter_by(name=user).first().id
-    item = Stuff(name=name, photo=photo, price=price, size=size, mass=mass, description=description, producer=producer)
+    item = Stuff(name=name, photo=photoName, price=price, size=size, mass=mass, description=description, producer=producer)
     db.session.add(item)
     db.session.commit()
 
@@ -61,10 +65,10 @@ def AddStorehouse():
     for el in storehouse:
         if el.city==city:
             resp = {
-            "errCode": 4,
-            "errString": "по этому адрессу уже есть склад"
-        }
-        return resp, 401
+                "errCode": 4,
+                "errString": "по этому адрессу уже есть склад"
+            }
+            return resp, 401
     
     storehouse = Storehouse(city=city, producer=userID)
     db.session.add(storehouse)

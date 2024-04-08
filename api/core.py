@@ -6,13 +6,15 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta, datetime
 import json
+import sys
+import os
 from flask_cors import CORS # pip install -U flask-cors
 
 api = Flask(__name__)
 CORS(api, supports_credentials=True)
 
 api.config["JWT_SECRET_KEY"] = "super-secret"
-api.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+api.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=999999)
 jwt = JWTManager(api)
 
 api.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///code-rock.db'

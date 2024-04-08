@@ -38,9 +38,7 @@ def GetCart():
         }
         return resp, 403
     
-    resp = {
-        "date": []
-    }
+    resp = []
     
     userID = User.query.filter_by(name=user).first().id
     # orders = Orders.query.join(Orders, (Orders.status == 'incart')&(Orders.user == userID)).all()
@@ -59,7 +57,7 @@ def GetCart():
                 'description': item.description,
                 'producer': item.producer
             }
-            resp["date"].append(row)
+            resp.append(row)
 
     return resp
 
@@ -67,9 +65,7 @@ def GetCart():
 def GetPVZ(producer):
     # на вход название продовца
     pvz = PVZ.query.filter_by(producer=producer).all()
-    resp = {
-        "date": []
-    }
+    resp = []
 
     for el in pvz:
         row = {
@@ -78,6 +74,6 @@ def GetPVZ(producer):
             'city': el.city,
             'address': el.address
         }
-        resp["date"].append(row)
+        resp.append(row)
     
     return resp
