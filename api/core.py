@@ -5,10 +5,11 @@ from flask_jwt_extended import create_access_token, get_jwt, get_jwt_identity, u
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta, datetime
+from flask_cors import CORS # pip install -U flask-cors
 import json
 import sys
 import os
-from flask_cors import CORS # pip install -U flask-cors
+import copy
 
 api = Flask(__name__)
 CORS(api, supports_credentials=True)
