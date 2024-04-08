@@ -49,6 +49,9 @@ const Header = (props) => {
                 <Link to='/addpvz'>
                     <button>добавить пвз</button>
                 </Link>
+                <Link to='/galary'>
+                    <button>каталог</button>
+                </Link>
             </>}
                 
         </div>
