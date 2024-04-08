@@ -15,7 +15,7 @@ def GetGalary():
         row = {
             'id': el.id,
             'name': el.name,
-            'foto': el.foto,
+            'photo': el.photo,
             'price': el.price,
             'size': el.size,
             'mass': el.mass,
@@ -32,7 +32,11 @@ def GetCart():
     # на вход ничего не надо
     user = get_jwt()["sub"]
     if GetRole(user) == 'producer':
-        return 'вы продавец, у вас нет корзины', 401
+        resp = {
+            "errCode": 2,
+            "errString": "вы продовец, у вас нет корзины"
+        }
+        return resp, 403
     
     resp = {
         "date": []
@@ -43,12 +47,12 @@ def GetCart():
     orders = Orders.query.filter(Orders.user==userID).all()
 
     for el in orders:
-        if el.status == 'incart':
+        if el.status == 'in cart':
             item = Stuff.query.filter_by(id=el.stuff).first()
             row = {
                 'id': item.id,
                 'name': item.name,
-                'foto': item.foto,
+                'photo': item.photo,
                 'price': item.price,
                 'size': item.size,
                 'mass': item.mass,
@@ -72,10 +76,7 @@ def GetPVZ(producer):
             'id': el.id,
             'producer': el.producer,
             'city': el.city,
-            'address': el.address,
-            'time_from': el.time_from,
-            'price_from': el.price_from,
-            'distance_from': el.distance_from
+            'address': el.address
         }
         resp["date"].append(row)
     

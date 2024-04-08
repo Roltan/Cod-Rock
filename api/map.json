@@ -1,0 +1,522 @@
+[
+  {
+    "id": 1,
+    "initial_city": "Москва",
+    "final_city": "Санкт-Петербург",
+    "time_way": 630,
+    "price_way": 4000,
+    "distance_way": 650
+  },
+  {
+    "id": 2,
+    "initial_city": "Москва",
+    "final_city": "Владивосток",
+    "time_way": 2300,
+    "price_way": 15000,
+    "distance_way": 5000
+  },
+  {
+    "id": 3,
+    "initial_city": "Москва",
+    "final_city": "Екатеринбург",
+    "time_way": 1500,
+    "price_way": 10000,
+    "distance_way": 1400
+  },
+  {
+    "id": 4,
+    "initial_city": "Москва",
+    "final_city": "Новосибирск",
+    "time_way": 3000,
+    "price_way": 20000,
+    "distance_way": 2800
+  },
+  {
+    "id": 5,
+    "initial_city": "Москва",
+    "final_city": "Иркутск",
+    "time_way": 3500,
+    "price_way": 23000,
+    "distance_way": 3800
+  },
+  {
+    "id": 6,
+    "initial_city": "Москва",
+    "final_city": "Красноярск",
+    "time_way": 3200,
+    "price_way": 21000,
+    "distance_way": 3400
+  },
+  {
+    "id": 7,
+    "initial_city": "Москва",
+    "final_city": "Казань",
+    "time_way": 800,
+    "price_way": 5500,
+    "distance_way": 800
+  },
+  {
+    "id": 8,
+    "initial_city": "Москва",
+    "final_city": "Уфа",
+    "time_way": 1100,
+    "price_way": 7000,
+    "distance_way": 1200
+  },
+  {
+    "id": 9,
+    "initial_city": "Москва",
+    "final_city": "Омск",
+    "time_way": 2500,
+    "price_way": 16000,
+    "distance_way": 2800
+  },
+  {
+    "id": 10,
+    "initial_city": "Москва",
+    "final_city": "Тюмень",
+    "time_way": 2600,
+    "price_way": 17000,
+    "distance_way": 3000
+  },
+  {
+    "id": 11,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Владивосток",
+    "time_way": 2500,
+    "price_way": 16000,
+    "distance_way": 5200
+  },
+  {
+    "id": 12,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Екатеринбург",
+    "time_way": 1200,
+    "price_way": 8000,
+    "distance_way": 1700
+  },
+  {
+    "id": 13,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Новосибирск",
+    "time_way": 3500,
+    "price_way": 23000,
+    "distance_way": 3900
+  },
+  {
+    "id": 14,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Иркутск",
+    "time_way": 4000,
+    "price_way": 26000,
+    "distance_way": 4300
+  },
+  {
+    "id": 15,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Красноярск",
+    "time_way": 3700,
+    "price_way": 24000,
+    "distance_way": 3600
+  },
+  {
+    "id": 16,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Казань",
+    "time_way": 1000,
+    "price_way": 6500,
+    "distance_way": 1200
+  },
+  {
+    "id": 17,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Уфа",
+    "time_way": 1300,
+    "price_way": 8500,
+    "distance_way": 1500
+  },
+  {
+    "id": 18,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Омск",
+    "time_way": 2800,
+    "price_way": 18000,
+    "distance_way": 3200
+  },
+  {
+    "id": 19,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Тюмень",
+    "time_way": 2900,
+    "price_way": 19000,
+    "distance_way": 3400
+  },
+  {
+    "id": 20,
+    "initial_city": "Санкт-Петербург",
+    "final_city": "Ижевск",
+    "time_way": 1700,
+    "price_way": 11000,
+    "distance_way": 1800
+  },
+  {
+    "id": 21,
+    "initial_city": "Владивосток",
+    "final_city": "Екатеринбург",
+    "time_way": 2800,
+    "price_way": 18000,
+    "distance_way": 3200
+  },
+  {
+    "id": 22,
+    "initial_city": "Владивосток",
+    "final_city": "Новосибирск",
+    "time_way": 4300,
+    "price_way": 28000,
+    "distance_way": 4500
+  },
+  {
+    "id": 23,
+    "initial_city": "Владивосток",
+    "final_city": "Иркутск",
+    "time_way": 4800,
+    "price_way": 31000,
+    "distance_way": 5200
+  },
+  {
+    "id": 24,
+    "initial_city": "Владивосток",
+    "final_city": "Красноярск",
+    "time_way": 4500,
+    "price_way": 29000,
+    "distance_way": 4200
+  },
+  {
+    "id": 25,
+    "initial_city": "Владивосток",
+    "final_city": "Казань",
+    "time_way": 2200,
+    "price_way": 14000,
+    "distance_way": 2500
+  },
+  {
+    "id": 26,
+    "initial_city": "Владивосток",
+    "final_city": "Уфа",
+    "time_way": 2500,
+    "price_way": 16000,
+    "distance_way": 2700
+  },
+  {
+    "id": 27,
+    "initial_city": "Владивосток",
+    "final_city": "Омск",
+    "time_way": 3900,
+    "price_way": 25000,
+    "distance_way": 4200
+  },
+  {
+    "id": 28,
+    "initial_city": "Владивосток",
+    "final_city": "Тюмень",
+    "time_way": 4000,
+    "price_way": 26000,
+    "distance_way": 4400
+  },
+  {
+    "id": 29,
+    "initial_city": "Владивосток",
+    "final_city": "Ижевск",
+    "time_way": 2700,
+    "price_way": 17000,
+    "distance_way": 2900
+  },
+  {
+    "id": 30,
+    "initial_city": "Екатеринбург",
+    "final_city": "Новосибирск",
+    "time_way": 1400,
+    "price_way": 9000,
+    "distance_way": 1600
+  },
+  {
+    "id": 31,
+    "initial_city": "Екатеринбург",
+    "final_city": "Иркутск",
+    "time_way": 2000,
+    "price_way": 13000,
+    "distance_way": 2500
+  },
+  {
+    "id": 32,
+    "initial_city": "Екатеринбург",
+    "final_city": "Красноярск",
+    "time_way": 1700,
+    "price_way": 11000,
+    "distance_way": 2000
+  },
+  {
+    "id": 33,
+    "initial_city": "Екатеринбург",
+    "final_city": "Казань",
+    "time_way": 300,
+    "price_way": 2000,
+    "distance_way": 400
+  },
+  {
+    "id": 34,
+    "initial_city": "Екатеринбург",
+    "final_city": "Уфа",
+    "time_way": 400,
+    "price_way": 2500,
+    "distance_way": 600
+  },
+  {
+    "id": 35,
+    "initial_city": "Екатеринбург",
+    "final_city": "Омск",
+    "time_way": 900,
+    "price_way": 6000,
+    "distance_way": 1200
+  },
+  {
+    "id": 36,
+    "initial_city": "Екатеринбург",
+    "final_city": "Тюмень",
+    "time_way": 800,
+    "price_way": 5500,
+    "distance_way": 1000
+  },
+  {
+    "id": 37,
+    "initial_city": "Екатеринбург",
+    "final_city": "Ижевск",
+    "time_way": 500,
+    "price_way": 3500,
+    "distance_way": 600
+  },
+  {
+    "id": 38,
+    "initial_city": "Новосибирск",
+    "final_city": "Иркутск",
+    "time_way": 1100,
+    "price_way": 7000,
+    "distance_way": 1400
+  },
+  {
+    "id": 39,
+    "initial_city": "Новосибирск",
+    "final_city": "Красноярск",
+    "time_way": 500,
+    "price_way": 3500,
+    "distance_way": 800
+  },
+  {
+    "id": 40,
+    "initial_city": "Новосибирск",
+    "final_city": "Казань",
+    "time_way": 1900,
+    "price_way": 12000,
+    "distance_way": 2300
+  },
+  {
+    "id": 41,
+    "initial_city": "Новосибирск",
+    "final_city": "Уфа",
+    "time_way": 2000,
+    "price_way": 13000,
+    "distance_way": 2400
+  },
+  {
+    "id": 42,
+    "initial_city": "Новосибирск",
+    "final_city": "Омск",
+    "time_way": 600,
+    "price_way": 4000,
+    "distance_way": 900
+  },
+  {
+    "id": 43,
+    "initial_city": "Новосибирск",
+    "final_city": "Тюмень",
+    "time_way": 700,
+    "price_way": 4500,
+    "distance_way": 1000
+  },
+  {
+    "id": 44,
+    "initial_city": "Новосибирск",
+    "final_city": "Ижевск",
+    "time_way": 2200,
+    "price_way": 14000,
+    "distance_way": 2800
+  },
+  {
+    "id": 45,
+    "initial_city": "Иркутск",
+    "final_city": "Красноярск",
+    "time_way": 700,
+    "price_way": 4500,
+    "distance_way": 1000
+  },
+  {
+    "id": 46,
+    "initial_city": "Иркутск",
+    "final_city": "Казань",
+    "time_way": 2800,
+    "price_way": 18000,
+    "distance_way": 3200
+  },
+  {
+    "id": 47,
+    "initial_city": "Иркутск",
+    "final_city": "Уфа",
+    "time_way": 2900,
+    "price_way": 19000,
+    "distance_way": 3400
+  },
+  {
+    "id": 48,
+    "initial_city": "Иркутск",
+    "final_city": "Омск",
+    "time_way": 1000,
+    "price_way": 6500,
+    "distance_way": 1200
+  },
+  {
+    "id": 49,
+    "initial_city": "Иркутск",
+    "final_city": "Тюмень",
+    "time_way": 1100,
+    "price_way": 7000,
+    "distance_way": 1300
+  },
+  {
+    "id": 50,
+    "initial_city": "Иркутск",
+    "final_city": "Ижевск",
+    "time_way": 3300,
+    "price_way": 22000,
+    "distance_way": 3800
+  },
+  {
+    "id": 51,
+    "initial_city": "Красноярск",
+    "final_city": "Казань",
+    "time_way": 2500,
+    "price_way": 16000,
+    "distance_way": 3200
+  },
+  {
+    "id": 52,
+    "initial_city": "Красноярск",
+    "final_city": "Уфа",
+    "time_way": 2600,
+    "price_way": 17000,
+    "distance_way": 3400
+  },
+  {
+    "id": 53,
+    "initial_city": "Красноярск",
+    "final_city": "Омск",
+    "time_way": 800,
+    "price_way": 5500,
+    "distance_way": 1200
+  },
+  {
+    "id": 54,
+    "initial_city": "Красноярск",
+    "final_city": "Тюмень",
+    "time_way": 900,
+    "price_way": 6000,
+    "distance_way": 1300
+  },
+  {
+    "id": 55,
+    "initial_city": "Красноярск",
+    "final_city": "Ижевск",
+    "time_way": 2500,
+    "price_way": 16000,
+    "distance_way": 3100
+  },
+  {
+    "id": 56,
+    "initial_city": "Казань",
+    "final_city": "Уфа",
+    "time_way": 300,
+    "price_way": 2000,
+    "distance_way": 400
+  },
+  {
+    "id": 57,
+    "initial_city": "Казань",
+    "final_city": "Омск",
+    "time_way": 1500,
+    "price_way": 10000,
+    "distance_way": 2000
+  },
+  {
+    "id": 58,
+    "initial_city": "Казань",
+    "final_city": "Тюмень",
+    "time_way": 1600,
+    "price_way": 11000,
+    "distance_way": 2200
+  },
+  {
+    "id": 59,
+    "initial_city": "Казань",
+    "final_city": "Ижевск",
+    "time_way": 400,
+    "price_way": 2500,
+    "distance_way": 500
+  },
+  {
+    "id": 60,
+    "initial_city": "Уфа",
+    "final_city": "Омск",
+    "time_way": 1200,
+    "price_way": 8000,
+    "distance_way": 1600
+  },
+  {
+    "id": 61,
+    "initial_city": "Уфа",
+    "final_city": "Тюмень",
+    "time_way": 1100,
+    "price_way": 7000,
+    "distance_way": 1500
+  },
+  {
+    "id": 62,
+    "initial_city": "Уфа",
+    "final_city": "Ижевск",
+    "time_way": 300,
+    "price_way": 2000,
+    "distance_way": 600
+  },
+  {
+    "id": 63,
+    "initial_city": "Омск",
+    "final_city": "Тюмень",
+    "time_way": 500,
+    "price_way": 3500,
+    "distance_way": 800
+  },
+  {
+    "id": 64,
+    "initial_city": "Омск",
+    "final_city": "Ижевск",
+    "time_way": 900,
+    "price_way": 6000,
+    "distance_way": 1200
+  },
+  {
+    "id": 65,
+    "initial_city": "Тюмень",
+    "final_city": "Ижевск",
+    "time_way": 1100,
+    "price_way": 7000,
+    "distance_way": 1200
+  }
+]

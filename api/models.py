@@ -21,7 +21,7 @@ class Producer(db.Model):
 class Stuff(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False)
-    foto = db.Column(db.String(256), nullable=False)
+    photo = db.Column(db.String(256), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     size = db.Column(db.String(256), nullable=False)
     mass = db.Column(db.Integer, nullable=False)
@@ -75,7 +75,6 @@ class Map(db.Model):
 
     def __repr__(self):
         return '<profiles %r>' % self.id
-    
 
 def GetRole(name):
     user = User.query.filter_by(name=name).first()

@@ -6,21 +6,44 @@ from models import *
 # автаризация
 @api.route('/login', methods=['POST'])
 def Login():
-    name = request.json.get('name')
-    password = request.json.get('password')
+    try:
+        name = request.json.get('name')
+        password = request.json.get('password')
+    except:
+        resp = {
+            "errCode": 1,
+            "errString": "нехватает данных"
+        }
+        return resp, 401
 
     if GetRole(name)=='user':
         user = User.query.filter_by(name=name).first()
         if user is None:
-            return "неверный логин", 401
+            resp = {
+                "errCode": 2,
+                "errString": "неверный логин"
+            }
+            return resp, 401
         if not check_password_hash(user.password, password):
-            return "неверный пароль", 401
+            resp = {
+                "errCode": 2,
+                "errString": "неверный пароль"
+            }
+            return resp, 401
     elif GetRole(name)=='producer':
         user = Producer.query.filter_by(name=name).first()
         if user is None:
-            return "неверный логин", 401
+            resp = {
+                "errCode": 2,
+                "errString": "неверный логин"
+            }
+            return resp, 401
         if not check_password_hash(user.password, password):
-            return "неверный пароль", 401
+            resp = {
+                "errCode": 2,
+                "errString": "неверный пароль"
+            }
+            return resp, 401
 
     token = create_access_token(identity=name)
     return {'access_token':token}
@@ -28,14 +51,25 @@ def Login():
 # регистрация
 @api.route('/register', methods=['PUT'])
 def Register():
-    name = request.json.get('name')
-    password = request.json.get('password')
-    role = request.json.get('role')
+    try:
+        name = request.json.get('name')
+        password = request.json.get('password')
+        role = request.json.get('role')
+    except:
+        resp = {
+            "errCode": 1,
+            "errString": "нехватает данных"
+        }
+        return resp, 401
 
     users = User.query.filter_by(name=name).first()
     producer = Producer.query.filter_by(name=name).first()
     if users or producer:
-        return 'такой пользователь уже зарегестрирован', 401
+        resp = {
+            "errCode": 4,
+            "errString": "такой пользователь уже есть"
+        }
+        return resp, 401
     password = generate_password_hash(password)
 
     if role == 'user':
