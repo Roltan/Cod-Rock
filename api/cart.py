@@ -73,14 +73,10 @@ def AcceptOrder():
 
 # добовление одного пути
 def UpdateWay(respWay, processed_city, map, storehouse, i, j):
-    # проверка не ездил ли он уже по этой дороге
-    if map[j].id in respWay[i]["id"]:
-        respWay[i]["status"] = 'dead end'
-
     # проверки чтоб понять какой из городов записывать
     if map[j].initial_city == processed_city:
         # проверка не приехал ли туда где уже был
-        if map[j].final_city in respWay[i]["city"]:
+        if map[j].final_city in respWay[i]["city"] or map[j].id in respWay[i]["id"]:
             respWay[i]["status"] = 'dead end'
             return
         respWay[i]["city"].append(map[j].final_city)
@@ -88,7 +84,7 @@ def UpdateWay(respWay, processed_city, map, storehouse, i, j):
             respWay[i]["status"] = 'finish' # меняю статус пути на финиш
     elif map[j].final_city == processed_city:
         # проверка не приехал ли туда где уже был
-        if map[j].initial_city in respWay[i]["city"]:
+        if map[j].initial_city in respWay[i]["city"] or map[j].id in respWay[i]["id"]:
             respWay[i]["status"] = 'dead end'
             return
         respWay[i]["city"].append(map[j].initial_city)
@@ -131,6 +127,7 @@ def GetWay():
         return resp, 404
     
     respWay = []
+    resp = {"data":[],"iter":0}
 
     # создал объекты для записи маршрутов
     map = Map.query.filter(Map.final_city==final_city).all()
@@ -165,56 +162,67 @@ def GetWay():
         storehouse.append(el.city)
 
     completed_roads = 0
+    iter = 0
     # самый сок
-    while completed_roads != len(respWay):
-        for i in range(len(respWay)):
-            # фильтрация закончиных от незаконченых
-            if respWay[i]["status"]=="dead end" or respWay[i]["status"]=="finish":
-                completed_roads+=1
-                break
+    # while completed_roads != len(respWay):
+    N = len(respWay)
+    for i in range(N):
+        # фильтрация закончиных от незаконченых
+        if respWay[i]["status"]=="dead end" or respWay[i]["status"]=="finish":
+            completed_roads+=1
+            break
 
-            countWay = len(respWay)
-            processed_city = respWay[i]["city"][-1]
-            map = Map.query.filter((Map.initial_city==processed_city)|(Map.final_city==processed_city)).all()
+        countWay = len(respWay)
+        processed_city = respWay[i]["city"][-1]
+        map = Map.query.filter((Map.initial_city==processed_city)|(Map.final_city==processed_city)).all()
 
-            # проверка на тупик
-            if len(map) == 1:
-                respWay[i]["status"] = "dead end"
-                break
-            countNewWay = len(map)
-            
-            # создаю объекты для ответвлений
-            if countNewWay > 2:
-                for k in range(countNewWay):
-                    respWay.append(respWay[i])
+        # проверка на тупик
+        if len(map) == 1:
+            respWay[i]["status"] = "dead end"
+            break
+        countNewWay = len(map)
+        
+        # создаю объекты для ответвлений
+        if countNewWay > 2:
+            for k in range(countNewWay):
+                respWay.append(respWay[i])
 
-            # заполняю текущий путь
-            UpdateWay(respWay, processed_city, map, storehouse, i, 0)
+        # заполняю текущий путь
+        UpdateWay(respWay, processed_city, map, storehouse, i, 0)
 
-            # заполняю путу которые появились изза развилок
-            for j in range(1, countNewWay):
-                UpdateWay(respWay, processed_city, map, storehouse, countWay+j, j)
+        # заполняю путу которые появились изза развилок
+        for j in range(1, countNewWay):
+            UpdateWay(respWay, processed_city, map, storehouse, countWay+j, j)
+    resp["data"].append(respWay)
+    iter+=1
+    resp["iter"] = iter
     
     # обработчик путей
 
     # оставил только законченные
-    resp = []
-    for el in respWay:
-        if el["status"]=="finish":
-            resp.append(el)
+    # resp = []
+    # short = {}
+    # for el in respWay:
+    #     if len(el["city"]) < 12:
+    #         short = el
+    #     if el["status"]=="finish":
+    #         resp.append(el)
     
-    # самый быстрый
-    maxSpeedID = 0
-    maxSpeed = resp[0]["time"]
-    i = 0
-    for el in resp:
-        if el["time"] < maxSpeed:
-            maxSpeedID = i
-            maxSpeed = el["time"]
-        i+=1
-        
-    fastTime = {
-        "fast time": resp[maxSpeedID]
-    }
-    return fastTime
+    # # самый быстрый
+    # maxSpeedID = 0
+    # maxSpeed = resp[0]["time"]
+    # i = 0
+    # for el in resp:
+    #     if el["time"] < maxSpeed:
+    #         maxSpeedID = i
+    #         maxSpeed = el["time"]
+    #     i+=1
+
+    # fastTime = {
+    #     "fast time": resp[maxSpeedID],
+    #     'len': len(resp[maxSpeedID]["city"]),
+    #     "short": short
+    # }
+
+    return resp
                 
