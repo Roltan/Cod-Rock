@@ -15,13 +15,20 @@ def AddStuf():
         return resp, 403
 
     try:
-        name = request.json["name"]
-        photoName = request.json["photoName"]
+        # name = request.json["name"]
+        # photoName = request.json["photoName"]
+        # photoFile = request.files['photo']
+        # price = request.json["price"]
+        # size = request.json["size"]
+        # mass = request.json["mass"]
+        # description = request.json["description"]
+        name = request.form["name"]
+        price = int(request.form["price"])
+        size = int(request.form["size"])
+        mass = int(request.form["mass"])
+        description = request.form["description"]
         photoFile = request.files['photo']
-        price = request.json["price"]
-        size = request.json["size"]
-        mass = request.json["mass"]
-        description = request.json["description"]
+        photoName = request.form["photoName"]
     except:
         resp = {
             "errCode": 1,
