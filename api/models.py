@@ -72,6 +72,7 @@ class Map(db.Model):
     time_way = db.Column(db.Integer, nullable=False)
     price_way = db.Column(db.Integer, nullable=False)
     distance_way = db.Column(db.Integer, nullable=False)
+    transport = db.Column(db.String(256), nullable=False)
 
     def __repr__(self):
         return '<profiles %r>' % self.id

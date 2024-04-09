@@ -23,7 +23,15 @@ with api.app_context():
             time_way = el['time_way']
             price_way = el['price_way']
             distance_way = el['distance_way']
-            row = Map(initial_city=initial_city, final_city=final_city, time_way=time_way, price_way=price_way, distance_way=distance_way)
+            # распределение транспорта
+            transport = randint(0,10)
+            if transport < 7:
+                transport = 'car'
+            elif transport < 8:
+                transport = 'air'
+            else:
+                transport = 'ship'
+            row = Map(initial_city=initial_city, final_city=final_city, time_way=time_way, price_way=price_way, distance_way=distance_way, transport=transport)
             db.session.add(row)
         db.session.commit()
     # СreateMap()
