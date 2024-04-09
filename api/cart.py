@@ -3,7 +3,7 @@
 from core import *
 from models import *
 
-@api.route('/dobavlenie', methods=["PUT"])
+@api.route('/addToCart', methods=["PUT"])
 @jwt_required()
 def AddToCart():
     user = get_jwt()["sub"]

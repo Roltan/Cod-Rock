@@ -100,7 +100,7 @@ const AddStuff = (props) => {
         <div>
 
             Добавление товара
-            <form enctype="multipart/form-data" id='addStuffForm'>
+            <form encType="multipart/form-data" id='addStuffForm'>
             <input type="text" placeholder="название" name='name' onChange={handleChange} value={stuff.name}/>
             фото
             <input type="file" name='photoFile' onChange={
