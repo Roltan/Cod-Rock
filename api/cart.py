@@ -70,15 +70,157 @@ def AcceptOrder():
     
     return 'запомнил'
 
-@api.route('/getWay')
+
+# добовление одного пути
+def UpdateWay(respWay, processed_city, map, storehouse, i, j):
+    # проверки чтоб понять какой из городов записывать
+    if map[j].initial_city == processed_city:
+        # проверка не приехал ли туда где уже был
+        if map[j].final_city in respWay[i]["city"] or map[j].id in respWay[i]["id"]:
+            respWay[i]["status"] = 'dead end'
+            return
+        respWay[i]["city"].append(map[j].final_city)
+        if map[j].final_city in storehouse: # проверяю есть ли склад в этом городе
+            respWay[i]["status"] = 'finish' # меняю статус пути на финиш
+    elif map[j].final_city == processed_city:
+        # проверка не приехал ли туда где уже был
+        if map[j].initial_city in respWay[i]["city"] or map[j].id in respWay[i]["id"]:
+            respWay[i]["status"] = 'dead end'
+            return
+        respWay[i]["city"].append(map[j].initial_city)
+        if map[j].initial_city in storehouse: # проверяю есть ли склад в этом городе
+            respWay[i]["status"] = 'finish' # меняю статус пути на финиш
+    # добовляю другие данные пути
+    respWay[i]["id"].append(map[j].id)
+    respWay[i]["time"] += map[j].time_way 
+    respWay[i]["price"] += map[j].price_way
+    respWay[i]["distance"] += map[j].distance_way
+
+# проверка на не законченость всех путей
+def CheckComplite(respWay):
+    for el in respWay:
+        if el["status"] == 'in way':
+            return True
+
+@api.route('/getWay', methods=["POST"])
 @jwt_required()
 def GetWay():
     user = get_jwt()["sub"]
     if GetRole(user) == 'producer':
         resp = {
             "errCode": 2,
-            "errString": "вы продовец, у вас нет корзины"
+            "errString": "вы продовец, вам не дам пути"
         }
         return resp, 403
     
+    try:
+        # id пвз который выбрал пользователь
+        pvz = request.json["pvz"]
+    except:
+        resp = {
+            "errCode": 1,
+            "errString": "нехватает данных"
+        }
+        return resp, 401
     
+    pvz = PVZ.query.filter_by(id=pvz).first()
+    final_city = pvz.city
+    if not final_city:
+        resp = {
+            "errCode": 3,
+            "errString": "нет такого пвз"
+        }
+        return resp, 404
+    
+    respWay = []
+
+    # создал объекты для записи маршрутов
+    map = Map.query.filter(Map.final_city==final_city).all()
+    for el in map:
+        respWay.append(
+            {
+                "city": [el.final_city, el.initial_city],
+                "id": [el.id],
+                "time": el.time_way,
+                "price": el.price_way,
+                "distance": el.distance_way,
+                "status": "in way"
+            }
+        )
+    map = Map.query.filter(Map.initial_city==final_city).all()
+    for el in map:
+        respWay.append(
+            {
+                "city": [el.initial_city, el.final_city],
+                "id": [el.id],
+                "time": el.time_way,
+                "price": el.price_way,
+                "distance": el.distance_way,
+                "status": "in way"
+            }
+        )
+
+    # список складов компании
+    storehouseTable = Storehouse.query.filter_by(producer=pvz.producer).all()
+    storehouse = []
+    for el in storehouseTable:
+        storehouse.append(el.city)
+
+    iter = 4
+    # самый сок
+    while iter>0:
+        N = len(respWay)
+        for i in range(N):
+            # фильтрация закончиных от незаконченых
+            if respWay[i]["status"]=="dead end" or respWay[i]["status"]=="finish":
+                continue
+
+            countWay = len(respWay)
+            processed_city = respWay[i]["city"][-1]
+            map = Map.query.filter((Map.initial_city==processed_city)|(Map.final_city==processed_city)).all()
+
+            # проверка на тупик
+            if len(map) == 1:
+                respWay[i]["status"] = "dead end"
+                continue
+            countNewWay = len(map)-1
+            
+            # создаю объекты для ответвлений
+            if countNewWay > 2:
+                for k in range(countNewWay):
+                    respWay.append(copy.deepcopy(respWay[i]))
+
+            # заполняю текущий путь
+            UpdateWay(respWay, processed_city, map, storehouse, i, 0)
+
+            # заполняю путу которые появились изза развилок
+            for j in range(1, countNewWay):
+                UpdateWay(respWay, processed_city, map, storehouse, countWay+j, j)
+            # return {"respWay":respWay,"len":len(respWay)}
+        print(iter)
+        iter-=1
+
+    
+    # обработчик путей
+
+    # оставил только законченные
+    resp = []
+    for el in respWay:
+        if el["status"]=="finish":
+            resp.append(el)
+    
+    # самый быстрый
+    maxSpeedID = 0
+    maxSpeed = resp[0]["time"]
+    i = 0
+    for el in resp:
+        if el["time"] < maxSpeed:
+            maxSpeedID = i
+            maxSpeed = el["time"]
+        i+=1
+        
+    fastTime = {
+        "fast time": resp[maxSpeedID]
+    }
+    return resp
+                
