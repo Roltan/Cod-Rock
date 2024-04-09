@@ -15,13 +15,6 @@ def AddStuf():
         return resp, 403
 
     try:
-        # name = request.json["name"]
-        # photoName = request.json["photoName"]
-        # photoFile = request.files['photo']
-        # price = request.json["price"]
-        # size = request.json["size"]
-        # mass = request.json["mass"]
-        # description = request.json["description"]
         name = request.form["name"]
         price = int(request.form["price"])
         size = int(request.form["size"])
@@ -38,6 +31,7 @@ def AddStuf():
 
     path = '../front/public/img/stuff/' + photoFile.filename
     photoFile.save(path)
+    os.rename(path, '../front/public/img/stuff/'+photoName)
 
     photoName = './public/img/stuff/'+photoName
     producer = Producer.query.filter_by(name=user).first().id
