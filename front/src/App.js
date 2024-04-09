@@ -28,7 +28,30 @@ function App() {
   }, [])
   const {token, removeToken, setToken} = useToken()
 
-  
+  function onAddToCart (id) {
+    console.log(id)
+    try {
+      axios({
+        method: "PUT",
+        url: "http://127.0.0.1:3001/dobavlenie",
+        headers: {
+            Authorization: 'Bearer ' + token
+        },
+        data: {
+            "stuff": id
+        }
+    }).then((response) =>{
+        console.log(response)
+    }).catch((error) => {
+        if(error.response){
+            console.log(error.response)
+        }
+    })
+    }
+    catch{
+        alert('оишкба')
+    }
+  }
 
   return (
     <div className="App">
@@ -41,7 +64,7 @@ function App() {
           <Route path="/addstuff" element={<AddStuff token={token} />} />
           <Route path="/addstore" element={<Store token={token} />} />
           <Route path="/addpvz" element={<AddPvz token={token} />} />
-          <Route path="/galary" element={<Catalog token={token} items={items}/>} />
+          <Route path="/galary" element={<Catalog token={token} items={items} onAddToCart={onAddToCart}/>} />
           <Route path="/getPvz" element={<GetPvz token={token} />} />
         </Routes>
       </BrowserRouter>

@@ -41,12 +41,11 @@ const AddStuff = (props) => {
         },
         data:{
             "name": stuff.name,
-            "foto": idImg + afterDot,
+            "photo": idImg + afterDot,
             "price": Number(stuff.price),
             "size": Number(stuff.size),
             "mass": Number(stuff.mass),
-            "description": stuff.description,
-            "producer": Number(stuff.producer)
+            "description": stuff.description
         }
     })
     .then((response) =>{
@@ -60,20 +59,42 @@ const AddStuff = (props) => {
         }
     })
     event.preventDefault()
-}
+    };
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+      };
+    
+    const [selectedFile, setSelectedFile] = React.useState(null);
+    const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+        if (!selectedFile) {
+            alert('Please select a file!');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+      };
     return ( 
         <div>
             Добавление товара
             <input type="text" placeholder="название" name='name' onChange={handleChange} value={stuff.name}/>
             фото
-            <input type="file" name='foto' onChange={(e) =>{
-                if (e.target.files.length > 0) {
-                let filename = e.target.files[0].name;
-                setGetUrl({
-                    name: filename
-                })
-                }}
+            <input type="file" name='foto' onChange={
+                (e) =>{
+                    if (e.target.files.length > 0) {
+                    let filename = e.target.files[0].name;
+                    console.log(e.target.files[0])
+                    setGetUrl({
+                        name: filename
+                    })
+                    console.log(e)
+            }}
+            // handleFileChange
             }
+            
             accept="image/png, image/gif, image/jpeg, image/jpg"
             />
             <input type="text" placeholder="цена" name='price'  onChange={handleChange} value={stuff.price}/>
@@ -81,10 +102,10 @@ const AddStuff = (props) => {
             <input type="text" placeholder="масса в кг" name='mass'  onChange={handleChange}  value={stuff.mass}/>
             Описание
             <textarea cols="30" rows="10" name='description'  onChange={handleChange}  value={stuff.description}></textarea>
-            <input type="text" placeholder="продавец" name='producer'  onChange={handleChange}  value={stuff.producer}/>
-            <button onClick={btnAdd}>Добавить товар</button>
+            <button onClick={handleSubmit}>Добавить товар</button>
             {isAdded ? 
-                <div>'Товар добавлен'</div> : ''}
+                <div>'Товар добавлен'</div> : ''
+            }
         </div>
      );
 }

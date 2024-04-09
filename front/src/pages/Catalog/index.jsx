@@ -3,7 +3,7 @@ import Card from '../../components/Card';
 
 
 
-const Catalog = ({items}) => {
+const Catalog = ({items, onAddToCart}) => {
 
     
     
@@ -24,7 +24,7 @@ const Catalog = ({items}) => {
         <div>
             Каталог продуктов
             {
-                items.map((item, index) => <Card key={index} {...item}/>)   
+                items.map((item, index) => <Card key={index} {...item} onPlus={(id) => onAddToCart(id)}/>)   
             }
         </div>
      );
