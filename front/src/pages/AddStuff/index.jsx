@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 
 const AddStuff = (props) => {
     const[isAdded, setIsAdded] = React.useState(false)
+    const[order, setOrder] = React.useState(false)
     const [selectedFile, setSelectedFile] = React.useState(null);
     const[getUrl, setGetUrl] = React.useState({
        name: "" 
@@ -122,6 +123,7 @@ const AddStuff = (props) => {
                 <div>'Товар добавлен'</div> : ''
             }
             </form>
+            {}
         </div>
      );
 }

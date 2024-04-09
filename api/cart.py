@@ -3,7 +3,7 @@
 from core import *
 from models import *
 
-@api.route('/dobavlenie', methods=["PUT"])
+@api.route('/addToCart', methods=["PUT"])
 @jwt_required()
 def AddToCart():
     user = get_jwt()["sub"]
@@ -215,10 +215,6 @@ def GetWay():
             el["price"] += pvz.price_from
             el["distance"] += pvz.distance_from
             resp.append(el)
-    
-    # если ниодной законченой дороги не появилось
-    while not resp:
-        CreateWay(respWay, storehouse, 1)
 
     # ищу самые самые
     minTimeWay = [resp[0],resp[0],resp[0]]
