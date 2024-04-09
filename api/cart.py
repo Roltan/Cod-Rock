@@ -210,6 +210,10 @@ def GetWay():
     resp = []
     for el in respWay:
         if el["status"]=="finish":
+            # добовляю данне о пвз
+            el["time"] += pvz.time_from
+            el["price"] += pvz.price_from
+            el["distance"] += pvz.distance_from
             resp.append(el)
     
     # если ниодной законченой дороги не появилось
@@ -217,32 +221,26 @@ def GetWay():
         CreateWay(respWay, storehouse, 1)
 
     # ищу самые самые
-    minTimeWay = [resp[0]]
-    minPriceWay = [resp[0]]
-    minDistanceWay = [resp[0]]
-    minTime = resp[0]["time"]
-    minPrice = resp[0]["price"]
-    minDistance = resp[0]["distance"]
-    i = 0
-    for el in resp:
-        if el["price"] == minPrice and el not in minPriceWay:
-            minPriceWay.append(el)
-        if el["price"] < minPrice:
-            minPriceWay = [el]
-            minPrice = el["price"]
+    minTimeWay = [resp[0],resp[0],resp[0]]
+    minPriceWay = [resp[0],resp[0],resp[0]]
+    minDistanceWay = [resp[0],resp[0],resp[0]]
 
-        if el["distance"] == minDistance and el not in minDistanceWay:
-            minDistanceWay.append(el)
-        if el["distance"] < minDistance:
-            minDistanceWay = [el]
-            minDistance = el["distance"]
+    for top in range(3):
+        minTime = resp[0]["time"]
+        minPrice = resp[0]["price"]
+        minDistance = resp[0]["distance"]
 
-        if el["time"] == minTime and el not in minTimeWay:
-            minTimeWay.append(el)
-        if el["time"] < minTime:
-            minTimeWay = [el]
-            minTime = el["time"]
-        i+=1
+        for el in resp:
+            if el["time"] < minTime and el not in minTimeWay:
+                minTimeWay[top] = el
+                minTime = el["time"]
+            if el["price"] < minPrice and el not in minPriceWay:
+                minPriceWay[top] = el
+                minPrice = el["price"]
+            if el["distance"] < minDistance and el not in minDistanceWay:
+                minDistanceWay[top] = el
+                minDistance = el["distance"]
+                
         
     fast = {
         "min time": minTimeWay,
