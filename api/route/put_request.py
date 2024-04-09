@@ -1,8 +1,9 @@
 # запросы на добовление
 
 from core import *
-from models import *
+from instance.models import *
 
+# добаыить товар
 @api.route('/addStuff', methods=['PUT'])
 @jwt_required()
 def AddStuf():
@@ -41,6 +42,7 @@ def AddStuf():
 
     return 'создал'
 
+# добавить склад
 @api.route('/addStorehouse', methods=["PUT"])
 @jwt_required()
 def AddStorehouse():
@@ -77,6 +79,7 @@ def AddStorehouse():
 
     return 'создал'
 
+# добавить пвз
 @api.route('/addPVZ', methods=["PUT"])
 @jwt_required()
 def AddPVZ():

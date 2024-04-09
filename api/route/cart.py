@@ -1,9 +1,10 @@
 # работа с корзиной и заказом
 
 from core import *
-from models import *
+from instance.models import *
 
-@api.route('/dobavlenie', methods=["PUT"])
+# добавил товар в корзину пользователя
+@api.route('/AddToCart', methods=["PUT"])
 @jwt_required()
 def AddToCart():
     user = get_jwt()["sub"]
@@ -34,6 +35,7 @@ def AddToCart():
 
     return 'добавил'
 
+# пользователь выбрал дорогу и подтвердил заказ
 @api.route('/acceptOrder', methods=["POST"])
 @jwt_required()
 def AcceptOrder():
@@ -60,7 +62,7 @@ def AcceptOrder():
         return resp, 401
     
     order = Orders.query.filter_by(id=id).first()
-    order.status = 'on way'
+    order.status = 'in way'
     order.storehouse = storehouse
     order.pvz = pvz
     order.initial_city = initial_city
@@ -146,9 +148,9 @@ def DelClone(arr):
     for i in range(len(arr), 0, -1):
         el = arr.pop(i)
         if el not in arr:
-            arr.insert(i)
-            
+            arr.insert(i)     
 
+# ищу дороги
 @api.route('/getWay', methods=["POST"])
 @jwt_required()
 def GetWay():

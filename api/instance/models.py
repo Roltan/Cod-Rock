@@ -27,6 +27,7 @@ class Stuff(db.Model):
     mass = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     producer = db.Column(db.Integer, nullable=False)
+    created_on = db.Column(db.DateTime(), default=datetime.utcnow)
 
     def __repr__(self):
         return '<profiles %r>' % self.id
@@ -85,3 +86,9 @@ def GetRole(name):
     else:
         role = 'user'
     return role
+
+def GetID(name):
+    if GetRole(name) == 'user':
+        return User.query.filter_by(name=name).first().id
+    else:
+        return Producer.query.filter_by(name=name).first().id

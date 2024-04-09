@@ -3,9 +3,9 @@
 from core import *
 
 import authorization
-import get_request
-import put_request
-import cart
+import route.get_request
+import route.put_request
+import route.cart
 
 # создать бд
 with api.app_context():
