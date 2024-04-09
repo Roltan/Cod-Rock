@@ -96,11 +96,39 @@ def UpdateWay(respWay, processed_city, map, storehouse, i, j):
     respWay[i]["price"] += map[j].price_way
     respWay[i]["distance"] += map[j].distance_way
 
-# проверка на не законченость всех путей
-def CheckComplite(respWay):
-    for el in respWay:
-        if el["status"] == 'in way':
-            return True
+# поиск путей
+def CreateWay(respWay, storehouse, iter):
+    while iter>0:
+        N = len(respWay)
+        for i in range(N):
+            # фильтрация закончиных от незаконченых
+            if respWay[i]["status"]=="dead end" or respWay[i]["status"]=="finish":
+                continue
+
+            countWay = len(respWay)
+            processed_city = respWay[i]["city"][-1]
+            map = Map.query.filter((Map.initial_city==processed_city)|(Map.final_city==processed_city)).all()
+
+            # проверка на тупик
+            if len(map) == 1:
+                respWay[i]["status"] = "dead end"
+                continue
+            countNewWay = len(map)-1
+            
+            # создаю объекты для ответвлений
+            if countNewWay > 2:
+                for k in range(countNewWay):
+                    respWay.append(copy.deepcopy(respWay[i]))
+
+            # заполняю текущий путь
+            UpdateWay(respWay, processed_city, map, storehouse, i, 0)
+
+            # заполняю путу которые появились изза развилок
+            for j in range(1, countNewWay):
+                UpdateWay(respWay, processed_city, map, storehouse, countWay+j, j)
+            # return {"respWay":respWay,"len":len(respWay)}
+        print(iter)
+        iter-=1
 
 @api.route('/getWay', methods=["POST"])
 @jwt_required()
@@ -166,39 +194,14 @@ def GetWay():
     for el in storehouseTable:
         storehouse.append(el.city)
 
-    iter = 4
+    # проверка прехали ли мы сразу в нужное место
+    for el in respWay:
+        if el["city"][-1] in storehouse:
+            el["status"] = "finish"
+
     # самый сок
-    while iter>0:
-        N = len(respWay)
-        for i in range(N):
-            # фильтрация закончиных от незаконченых
-            if respWay[i]["status"]=="dead end" or respWay[i]["status"]=="finish":
-                continue
-
-            countWay = len(respWay)
-            processed_city = respWay[i]["city"][-1]
-            map = Map.query.filter((Map.initial_city==processed_city)|(Map.final_city==processed_city)).all()
-
-            # проверка на тупик
-            if len(map) == 1:
-                respWay[i]["status"] = "dead end"
-                continue
-            countNewWay = len(map)-1
-            
-            # создаю объекты для ответвлений
-            if countNewWay > 2:
-                for k in range(countNewWay):
-                    respWay.append(copy.deepcopy(respWay[i]))
-
-            # заполняю текущий путь
-            UpdateWay(respWay, processed_city, map, storehouse, i, 0)
-
-            # заполняю путу которые появились изза развилок
-            for j in range(1, countNewWay):
-                UpdateWay(respWay, processed_city, map, storehouse, countWay+j, j)
-            # return {"respWay":respWay,"len":len(respWay)}
-        print(iter)
-        iter-=1
+    iter = 4
+    CreateWay(respWay, storehouse, iter)
 
     
     # обработчик путей
@@ -209,18 +212,42 @@ def GetWay():
         if el["status"]=="finish":
             resp.append(el)
     
-    # самый быстрый
-    maxSpeedID = 0
-    maxSpeed = resp[0]["time"]
+    # если ниодной законченой дороги не появилось
+    while not resp:
+        CreateWay(respWay, storehouse, 1)
+
+    # ищу самые самые
+    minTimeWay = [resp[0]]
+    minPriceWay = [resp[0]]
+    minDistanceWay = [resp[0]]
+    minTime = resp[0]["time"]
+    minPrice = resp[0]["price"]
+    minDistance = resp[0]["distance"]
     i = 0
     for el in resp:
-        if el["time"] < maxSpeed:
-            maxSpeedID = i
-            maxSpeed = el["time"]
+        if el["price"] == minPrice and el not in minPriceWay:
+            minPriceWay.append(el)
+        if el["price"] < minPrice:
+            minPriceWay = [el]
+            minPrice = el["price"]
+
+        if el["distance"] == minDistance and el not in minDistanceWay:
+            minDistanceWay.append(el)
+        if el["distance"] < minDistance:
+            minDistanceWay = [el]
+            minDistance = el["distance"]
+
+        if el["time"] == minTime and el not in minTimeWay:
+            minTimeWay.append(el)
+        if el["time"] < minTime:
+            minTimeWay = [el]
+            minTime = el["time"]
         i+=1
         
-    fastTime = {
-        "fast time": resp[maxSpeedID]
+    fast = {
+        "min time": minTimeWay,
+        'min price': minPriceWay,
+        'min distance': minDistanceWay
     }
-    return resp
+    return fast
                 
