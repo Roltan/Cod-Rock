@@ -146,16 +146,19 @@ def CreateWay(respWay, storehouse, transport, iter):
         iter-=1
 
 # меняю пути из данных для расчёта в данные для таблиц
-def PrepWay(wayArr, pvz, user):
+def PrepWay(wayArr, pvz):
     resp = []
     for way in wayArr:
         iterResp = {
             "pvz": pvz.id,
-            "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==GetID(user))).first().id,
+            "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==pvz.producer)).first().id,
             "initial_city": way["city"][0],
             "final_city": way["city"][-1],
             "wayList": way["city"],
-            "way": ''
+            "way": '',
+            "time": way.time_way,
+            "price": way.price_way,
+            "distance": way.distance_way,
         }
         wayString = ''
         for i in range(len(way["id"])-1):
@@ -311,8 +314,8 @@ def GetWay():
                 minDistance = el["distance"]
 
     fast = {
-        "min time": PrepWay(minTimeWay, pvz, user),
-        'min price': PrepWay(minPriceWay, pvz, user),
-        'min distance': PrepWay(minDistanceWay, pvz, user)
+        "minTime": PrepWay(minTimeWay, pvz),
+        'minPrice': PrepWay(minPriceWay, pvz),
+        'minDistance': PrepWay(minDistanceWay, pvz)
     }
     return fast
