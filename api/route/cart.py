@@ -3,8 +3,7 @@
 from core import *
 from instance.models import *
 
-# добавил товар в корзину пользователя
-@api.route('/AddToCart', methods=["PUT"])
+@api.route('/addToCart', methods=["PUT"])
 @jwt_required()
 def AddToCart():
     user = get_jwt()["sub"]

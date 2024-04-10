@@ -12,6 +12,7 @@ import Store from "./pages/AddStore";
 import AddPvz from "./pages/AddPvz";
 import Catalog from "./pages/Catalog";
 import GetPvz from './components/GetPvz';
+import Accept from './pages/Accept';
 
 function App() {
   const[items, setItems] = React.useState([])
@@ -19,11 +20,15 @@ function App() {
 
 
   React.useEffect(()=>{
-      async function fetchData(){
+      try {
+        async function fetchData(){
           const getItem = await axios.get("http://127.0.0.1:3001/galary")
           setItems(getItem.data.date)
+        }
+        fetchData()
+      } catch (error) {
+        alert('ошибка получения')
       }
-      fetchData()
 
   }, [])
   const {token, removeToken, setToken} = useToken()
@@ -66,6 +71,7 @@ function App() {
           <Route path="/addpvz" element={<AddPvz token={token} />} />
           <Route path="/galary" element={<Catalog token={token} items={items} onAddToCart={onAddToCart}/>} />
           <Route path="/getPvz" element={<GetPvz token={token} />} />
+          {/* <Route path="/decoration" element={<Accept token={token} />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

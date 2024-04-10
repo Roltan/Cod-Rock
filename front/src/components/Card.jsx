@@ -1,12 +1,21 @@
 import React from 'react'
 import axios from 'axios'
+import Order from './Order'
 
 const Card = ({id, name, photo, price, size, mass, description, producer, onPlus, token}) => {
-
+    const[isCart, setIsCart] = React.useState(false)
+    const[pvz, setPvz] = React.useState([])
   
-    const onClickCart = () =>{
-        onPlus(id)
-    } 
+    const onClickCart = async () =>{
+        // setIsCart(true);
+        // onPlus(id);
+
+    const getPvz = await axios.get(`http://127.0.0.1:3001/pvz/${producer}`)
+    setIsCart(true)
+    setPvz(getPvz.data)
+      
+}
+
     return ( 
         <div>
             Карточка товара
@@ -21,6 +30,11 @@ const Card = ({id, name, photo, price, size, mass, description, producer, onPlus
             <p>Описание: {description}</p>
             <p>Продавец: {producer} </p>
             <button onClick={onClickCart}>Купить товар</button>
+            
+           {isCart? 
+                // 
+                pvz.map((item, index) => <Order key={index} {...item} token={token}/>)   
+           : ''}
         </div>
         
      );

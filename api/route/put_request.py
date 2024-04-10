@@ -34,7 +34,7 @@ def AddStuf():
     photoFile.save(path)
     os.rename(path, '../front/public/img/stuff/'+photoName)
 
-    photoName = './public/img/stuff/'+photoName
+    photoName = '/img/stuff/'+photoName
     producer = Producer.query.filter_by(name=user).first().id
     item = Stuff(name=name, photo=photoName, price=price, size=size, mass=mass, description=description, producer=producer)
     db.session.add(item)
