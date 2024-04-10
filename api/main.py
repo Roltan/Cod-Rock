@@ -6,6 +6,7 @@ import authorization
 import route.get_request
 import route.put_request
 import route.cart
+import route.producer_panel
 
 # создать бд
 with api.app_context():

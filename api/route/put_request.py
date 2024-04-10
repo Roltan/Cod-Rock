@@ -19,9 +19,9 @@ def AddStuf():
 
     try:
         name = request.form["name"]
-        price = int(request.form["price"])
-        size = int(request.form["size"])
-        mass = int(request.form["mass"])
+        price = request.form["price"]
+        size = request.form["size"]
+        mass = request.form["mass"]
         description = request.form["description"]
         photoFile = request.files['photo']
         photoName = request.form["photoName"]
