@@ -145,11 +145,25 @@ def CreateWay(respWay, storehouse, transport, iter):
         print(iter)
         iter-=1
 
-def DelClone(arr):
-    for i in range(len(arr), 0, -1):
-        el = arr.pop(i)
-        if el not in arr:
-            arr.insert(i)     
+# меняю пути из данных для расчёта в данные для таблиц
+def PrepWay(wayArr, pvz, user):
+    resp = []
+    for way in wayArr:
+        iterResp = {
+            "pvz": pvz.id,
+            "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==GetID(user))).first().id,
+            "initial_city": way["city"][0],
+            "final_city": way["city"][-1],
+            "wayList": way["city"],
+            "way": ''
+        }
+        wayString = ''
+        for i in range(len(way["id"])-1):
+            wayString += str(way["id"][i])+' '
+        wayString += str(way["id"][-1])
+        iterResp['way']=wayString
+        resp.append(iterResp)
+    return resp
 
 # ищу дороги
 @api.route('/getWay', methods=["POST"])
@@ -296,16 +310,9 @@ def GetWay():
                 minDistanceWay[top] = el
                 minDistance = el["distance"]
 
-    # проверка на скудность дорог
-    if len(resp) < 3:
-        DelClone(minDistanceWay)
-        DelClone(minPriceWay)
-        DelClone(minTimeWay)
-
     fast = {
-        "minTime": minTimeWay,
-        'minPrice': minPriceWay,
-        'minDistance': minDistanceWay
+        "min time": PrepWay(minTimeWay, pvz, user),
+        'min price': PrepWay(minPriceWay, pvz, user),
+        'min distance': PrepWay(minDistanceWay, pvz, user)
     }
     return fast
-                

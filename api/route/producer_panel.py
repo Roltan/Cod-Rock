@@ -16,18 +16,20 @@ def PatchStuff(stuff):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
 
+    query = 0
     # на вход можно и id и имя
-    if type(stuff) == str:
-        stuff = Stuff.query.filter_by(name=stuff).first()
-    elif type(stuff) == int:
-        stuff = Stuff.query.filter_by(id=stuff).first()
-    else:
+    try:
+        int(stuff)
+        query = Stuff.query.filter_by(id=stuff).first()
+    except:
+        query = Stuff.query.filter_by(name=stuff).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого тавара"
+        }, 404
 
-    if stuff.producer != GetID(user):
+    if query.producer != GetID(user):
         return {
             "errCode": 6,
             "errString": "это не ваш товар"
@@ -38,31 +40,31 @@ def PatchStuff(stuff):
     # принимаю данные
     try:
         name = request.form["name"]
-        stuff.name = name
+        query.name = name
         patch.append('имя')
     except:
         pass
     try:
         price = request.form["price"]
-        stuff.price = price
+        query.price = price
         patch.append('цену')
     except:
         pass
     try:
         size = request.form["size"]
-        stuff.size = size
+        query.size = size
         patch.append('размер')
     except:
         pass
     try:
         mass = request.form["mass"]
-        stuff.mass = mass
+        query.mass = mass
         patch.append('массу')
     except:
         pass
     try:
         description = request.form["description"]
-        stuff.description = description
+        query.description = description
         patch.append('описание')
     except:
         pass
@@ -71,7 +73,7 @@ def PatchStuff(stuff):
         photoFile = request.files['photo']
 
         # удалил старую
-        lastName = stuff.photo
+        lastName = query.photo
         path = '../front/img/stuff/' + lastName
         os.remove(path)
 
@@ -79,15 +81,16 @@ def PatchStuff(stuff):
         path = '../front/img/stuff/' + photoFile.filename
         photoFile.save(path)
         os.rename(path, '../front/img/stuff/'+photoName)
-        stuff.photo = '/img/stuff/'+photoName
+        query.photo = '/img/stuff/'+photoName
 
         patch.append('фото')
     except:
         pass
 
     if patch:
+        db.session.commit()
         resp = 'изменил '
-        for i in range(patch-1):
+        for i in range(len(patch)-1):
             resp+= patch[i]+', '
         resp+= patch[-1]
         return {
@@ -108,15 +111,18 @@ def DelStuff(stuff):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
     
-    if type(stuff) == str:
-        query = Stuff.query.filter_by(name=stuff).first()
-    elif type(stuff) == int:
+    query = 0
+    # на вход можно и id и имя
+    try:
+        int(stuff)
         query = Stuff.query.filter_by(id=stuff).first()
-    else:
+    except:
+        query = Stuff.query.filter_by(name=stuff).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого товара"
+        }, 404
 
     if query.producer != GetID(user):
         return {
@@ -124,9 +130,14 @@ def DelStuff(stuff):
             "errString": "это не ваш товар"
         }, 403
 
-    db.session.delete(Orders.query.filter_by(stuff=query.id).first())
+    try:
+        db.session.delete(Orders.query.filter_by(stuff=query.id).first())
+    except:
+        pass
     db.session.delete(query)
     db.session.commit()
+
+    return 'убрал'
 
 
 # пвз
@@ -141,17 +152,18 @@ def PatchPVZ(pvz):
         }, 403
 
     # на вход можно и id и адресс
-    if type(pvz) == str:
-        pvz = Stuff.query.filter_by(name=pvz).first()
-    elif type(pvz) == int:
-        pvz = Stuff.query.filter_by(id=pvz).first()
-    else:
+    try:
+        int(pvz)
+        query = PVZ.query.filter_by(id=pvz).first()
+    except:
+        query = PVZ.query.filter_by(name=pvz).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого пвз"
+        }, 404
     
-    if pvz.producer != GetID(user):
+    if query.producer != GetID(user):
         return {
             "errCode": 6,
             "errString": "это не ваш товар"
@@ -162,39 +174,40 @@ def PatchPVZ(pvz):
     # принимаю данные
     try:
         city = request.form["city"]
-        pvz.city = city
+        query.city = city
         patch.append('город')
     except:
         pass
     try:
         address = request.form["address"]
-        pvz.address = address
+        query.address = address
         patch.append('адресс')
     except:
         pass
     try:
         time_from = request.form["time_from"]
-        pvz.time_from = time_from
+        query.time_from = time_from
         patch.append('время до')
     except:
         pass
     try:
         price_from = request.form["price_from"]
-        pvz.price_from = price_from
+        query.price_from = price_from
         patch.append('цена до')
     except:
         pass
     try:
         distance_from = request.form["distance_from"]
-        pvz.distance_from = distance_from
+        query.distance_from = distance_from
         patch.append('растояние до')
     except:
         pass
 
 
     if patch:
+        db.session.commit()
         resp = 'изменил '
-        for i in range(patch-1):
+        for i in range(len(patch)-1):
             resp+= patch[i]+', '
         resp+= patch[-1]
         return {
@@ -215,15 +228,18 @@ def DelPVZ(pvz):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
     
-    if type(pvz) == str:
-        query = Stuff.query.filter_by(address=pvz).first()
-    elif type(pvz) == int:
-        query = Stuff.query.filter_by(id=pvz).first()
-    else:
+    pvz = 0
+    # на вход можно и id и имя
+    try:
+        int(pvz)
+        query = PVZ.query.filter_by(id=pvz).first()
+    except:
+        query = PVZ.query.filter_by(name=pvz).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого пвз"
+        }, 404
 
     if query.producer != GetID(user):
         return {
@@ -231,9 +247,14 @@ def DelPVZ(pvz):
             "errString": "это не ваш товар"
         }, 403
 
-    db.session.delete(Orders.query.filter_by(pvz=query.id).first())
+    try:
+        db.session.delete(Orders.query.filter_by(pvz=query.id).first())
+    except:
+        pass
     db.session.delete(query)
     db.session.commit()
+
+    return "убрал"
 
 
 # склады
@@ -247,18 +268,20 @@ def PatchStorehouse(storehouse):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
 
-    # на вход можно и id и город
-    if type(storehouse) == str:
-        storehouse = Stuff.query.filter_by(city=storehouse).first()
-    elif type(storehouse) == int:
-        storehouse = Stuff.query.filter_by(id=storehouse).first()
-    else:
+    query = 0
+    # на вход можно и id и имя
+    try:
+        int(storehouse)
+        query = Storehouse.query.filter_by(id=storehouse).first()
+    except:
+        query = Storehouse.query.filter_by(name=storehouse).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого склада"
+        }, 404
     
-    if storehouse.producer != GetID(user):
+    if query.producer != GetID(user):
         return {
             "errCode": 6,
             "errString": "это не ваш товар"
@@ -269,7 +292,7 @@ def PatchStorehouse(storehouse):
     # принимаю данные
     try:
         city = request.form["city"]
-        storehouse.city = city
+        query.city = city
         patch.append('город')
     except:
         pass
@@ -277,8 +300,9 @@ def PatchStorehouse(storehouse):
 
 
     if patch:
+        db.session.commit()
         resp = 'изменил '
-        for i in range(patch-1):
+        for i in range(len(patch)-1):
             resp+= patch[i]+', '
         resp+= patch[-1]
         return {
@@ -299,15 +323,17 @@ def DelStorehouse(storehouse):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
     
-    if type(storehouse) == str:
-        query = Stuff.query.filter_by(address=storehouse).first()
-    elif type(storehouse) == int:
-        query = Stuff.query.filter_by(id=storehouse).first()
-    else:
+    # на вход можно и id и имя
+    try:
+        int(storehouse)
+        query = Storehouse.query.filter_by(id=storehouse).first()
+    except:
+        query = Storehouse.query.filter_by(name=storehouse).first()
+    if not query:
         return {
-            "errCode": 1,
-            "errString": "нехватает данных"
-        }, 401
+            'err': 5,
+            "errString": "нет такого склада"
+        }, 404
 
     if query.producer != GetID(user):
         return {
@@ -315,6 +341,11 @@ def DelStorehouse(storehouse):
             "errString": "это не ваш товар"
         }, 403
 
-    db.session.delete(Orders.query.filter_by(storehouse=query.id).first())
+    try:
+        db.session.delete(Orders.query.filter_by(storehouse=query.id).first())
+    except:
+        pass
     db.session.delete(query)
     db.session.commit()
+
+    return 'удалил'

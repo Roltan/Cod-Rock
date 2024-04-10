@@ -121,7 +121,7 @@ def GetMiPVZ():
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
     
-    pvz = Stuff.query.filter_by(producer=GetID(user)).all()
+    pvz = PVZ.query.filter_by(producer=GetID(user)).all()
     resp = []
 
     for el in pvz:

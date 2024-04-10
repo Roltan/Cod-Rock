@@ -29,7 +29,6 @@ class Stuff(db.Model):
     mass = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     producer = db.Column(db.Integer, nullable=False)
-    created_on = db.Column(db.DateTime(), default=datetime.utcnow)
 
     def __repr__(self):
         return '<profiles %r>' % self.id
