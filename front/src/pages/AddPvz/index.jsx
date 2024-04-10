@@ -18,32 +18,23 @@ const AddPvz = (props) => {
         }))
     }
 
-    function btnAdd(event){
-        console.log(pvz)
-        axios({
-            method: "PUT",
-            url: "http://127.0.0.1:3001/addPVZ",
+    async function btnAdd(event){
+        const obj = {
+            "address": pvz.address,
+            "city": pvz.city,
+            "time_from": pvz.time_from,
+            "price_from": pvz.price_from,
+            "distance_from": pvz.distance_from
+        }
+        console.log(obj)
+        const addPvz = await axios.put('http://127.0.0.1:3001/addPVZ', obj, {
             headers: {
-                Authorization: 'Bearer ' + props.token
-            },
-            data:{
-                "address": pvz.address,
-                "city": pvz.city,
-                "time_from": Number(pvz.time_from),
-                "price_from": Number(pvz.price_from),
-                "distance_from": Number(pvz.distance_from)
-            }})
-            .then((response) =>{
-            if(response.data === 'создал'){
-                console.log('создал')
-                setIsAdded(true)
-            }})
-            .catch((error) => {
-            if(error.response){
-                console.log(error.response)
+                'Authorization': 'Bearer ' + props.token
             }
-            })
-            event.preventDefault()
+        })
+        
+        event.preventDefault()
+        console.log(addPvz)
     }
 
     return ( 

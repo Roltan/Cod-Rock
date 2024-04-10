@@ -248,7 +248,7 @@ def GetWay():
             el["status"] = "finish"
 
     # самый сок
-    iter = 5
+    iter = 4
     CreateWay(respWay, storehouse, transport, iter)
 
     
@@ -303,9 +303,9 @@ def GetWay():
         DelClone(minTimeWay)
 
     fast = {
-        "min time": minTimeWay,
-        'min price': minPriceWay,
-        'min distance': minDistanceWay
+        "minTime": minTimeWay,
+        'minPrice': minPriceWay,
+        'minDistance': minDistanceWay
     }
     return fast
                 

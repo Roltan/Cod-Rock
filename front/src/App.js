@@ -16,14 +16,14 @@ import Accept from './pages/Accept';
 
 function App() {
   const[items, setItems] = React.useState([])
-
-
+  const {token, removeToken, setToken} = useToken()
+  
 
   React.useEffect(()=>{
       try {
         async function fetchData(){
-          const getItem = await axios.get("http://127.0.0.1:3001/galary")
-          setItems(getItem.data.date)
+          const getItem = await axios.get("http://127.0.0.1:3001/galary");
+          setItems(getItem.data)
         }
         fetchData()
       } catch (error) {
@@ -31,7 +31,7 @@ function App() {
       }
 
   }, [])
-  const {token, removeToken, setToken} = useToken()
+
 
   function onAddToCart (id) {
     console.log(id)

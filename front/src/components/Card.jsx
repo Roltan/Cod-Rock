@@ -22,7 +22,7 @@ const Card = ({id, name, photo, price, size, mass, description, producer, onPlus
             <p>номер товара {id}</p>
             <p>Имя {name}</p>
             <p>Фото: 
-                <img src={photo} alt="Photo" />
+                <img src={photo} alt="Photo" width={300} height={300}/>
             </p>
             <p>Цена:{price} </p>
             <p>Размер: {size}</p>

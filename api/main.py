@@ -32,6 +32,7 @@ with api.app_context():
             else:
                 transport = 'ship'
             row = Map(initial_city=initial_city, final_city=final_city, time_way=time_way, price_way=price_way, distance_way=distance_way, transport=transport)
+   
             db.session.add(row)
         db.session.commit()
     # СreateMap()

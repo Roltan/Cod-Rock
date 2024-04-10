@@ -10,9 +10,7 @@ from instance.models import *
 def GetGalary():
     # на вход ничего не надо
     galary = Stuff.query.all()
-    resp = {
-        "date": []
-    }
+    resp = []
 
     for el in galary:
         row = {
@@ -25,7 +23,7 @@ def GetGalary():
             'description': el.description,
             'producer': el.producer
         }
-        resp["date"].append(row)
+        resp.append(row)
     
     return resp
 
@@ -84,7 +82,7 @@ def GetPVZ(producer):
     return resp
 
 # корзина от леца продовца
-@api.route('/galary/Producer', methods=["GET"])
+@api.route('/galaryProducer', methods=["GET"])
 @jwt_required()
 def GetStuff():
     user = get_jwt()["sub"]
