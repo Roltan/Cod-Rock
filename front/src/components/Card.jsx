@@ -7,8 +7,8 @@ const Card = ({id, name, photo, price, size, mass, description, producer, onPlus
     const[pvz, setPvz] = React.useState([])
   
     const onClickCart = async () =>{
-        // setIsCart(true);
-        // onPlus(id);
+        setIsCart(true);
+        onPlus(id);
 
     const getPvz = await axios.get(`http://127.0.0.1:3001/pvz/${producer}`)
     setIsCart(true)

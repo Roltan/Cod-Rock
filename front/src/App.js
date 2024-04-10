@@ -34,11 +34,11 @@ function App() {
 
 
   function onAddToCart (id) {
-    console.log(id)
+    // console.log(id)
     try {
       axios({
         method: "PUT",
-        url: "http://127.0.0.1:3001/dobavlenie",
+        url: "http://127.0.0.1:3001/addToCart",
         headers: {
             Authorization: 'Bearer ' + token
         },
