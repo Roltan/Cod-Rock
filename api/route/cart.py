@@ -62,7 +62,7 @@ def AcceptOrder():
         }
         return resp, 401
     
-    order = Orders.query.filter_by(id=id).first()
+    order = Orders.query.filter((Orders.stuff==id)&(Orders.user==GetID(user))).first()
     order.status = 'in way'
     order.storehouse = storehouse
     order.pvz = pvz
