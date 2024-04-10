@@ -151,7 +151,7 @@ def PrepWay(wayArr, pvz, user):
     for way in wayArr:
         iterResp = {
             "pvz": pvz.id,
-            "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==GetID(user))).first().id,
+            "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==pvz.producer)).first().id,
             "initial_city": way["city"][0],
             "final_city": way["city"][-1],
             "wayList": way["city"],
@@ -311,8 +311,8 @@ def GetWay():
                 minDistance = el["distance"]
 
     fast = {
-        "min time": PrepWay(minTimeWay, pvz, user),
-        'min price': PrepWay(minPriceWay, pvz, user),
-        'min distance': PrepWay(minDistanceWay, pvz, user)
+        "minTime": PrepWay(minTimeWay, pvz, user),
+        'minPrice': PrepWay(minPriceWay, pvz, user),
+        'minDistance': PrepWay(minDistanceWay, pvz, user)
     }
     return fast

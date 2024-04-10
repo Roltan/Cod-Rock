@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import Info from './LowTime'
-import { MinDistanceComponent, MinPriceComponent, MinTimeComponent } from './LowTime';
+import Info from './Way'
+import { MinDistanceComponent, MinPriceComponent, MinTimeComponent } from './Way';
 
 const Order = ({address, city, producer, id, token}) => {
-    // console.log(token)   
+    console.log(token)   
     const[isWay, setIsWay] = React.useState(false)
     const[getWay, setGetWay] = React.useState([]);
     const[reqPvz, setReqPvz] = React.useState({
@@ -28,7 +28,7 @@ const Order = ({address, city, producer, id, token}) => {
                     ship: reqPvz.ship,
                 }
             })
-            // console.log(getPvz)
+            console.log(getPvz)
             setGetWay(getPvz.data)
 
             setIsWay(true)

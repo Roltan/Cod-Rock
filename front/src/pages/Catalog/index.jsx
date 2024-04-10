@@ -20,7 +20,7 @@ const Catalog = ({items, onAddToCart, token}) => {
         
         
     // }
-
+    
     return ( 
         <div>
             Каталог продуктов
