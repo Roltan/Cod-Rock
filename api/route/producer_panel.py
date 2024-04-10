@@ -1,4 +1,6 @@
 # панель производителя
+import sys
+sys.path.append('../')
 
 from core import *
 from instance.models import *

@@ -1,4 +1,6 @@
 #  модели таблиц базы данных
+import sys
+sys.path.append('../')
 
 from core import *
 

@@ -1,7 +1,7 @@
 # функции по запросам
 
 from core import *
-from models import *
+from instance.models import *
 
 # автаризация
 @api.route('/login', methods=['POST'])

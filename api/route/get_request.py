@@ -1,4 +1,6 @@
 # заросы на отрисовку
+import sys
+sys.path.append('../')
 
 from core import *
 from instance.models import *
@@ -113,7 +115,7 @@ def GetStuff():
 # пвз от леца продовца
 @api.route('/pvz/Producer', methods=["GET"])
 @jwt_required()
-def GetStuff():
+def GetMiPVZ():
     user = get_jwt()["sub"]
     if GetRole(user) == 'user':
         return {

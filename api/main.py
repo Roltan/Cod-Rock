@@ -13,7 +13,7 @@ with api.app_context():
 
     # создать граф мира
     def СreateMap():
-        from models import Map
+        from instance.models import Map
         script_dir = os.path.dirname(sys.argv[0])
         with open(os.path.join(script_dir, 'instance/map.json'), 'r', encoding='utf-8') as json_file:
             data = json.load(json_file)
