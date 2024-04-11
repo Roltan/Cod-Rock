@@ -179,7 +179,7 @@ header{
             &>div:first-child{
                 display: flex;
                 flex-direction: row;
-                gap: 2.23vw;
+                gap: 1.23vw;
 
                 &>div:first-child{
                     width: 10.4vw;
@@ -217,6 +217,16 @@ header{
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                    }
+                    &>button{
+                        width: 139px;
+                        height: 50px;
+                        background-color: #7BFF5A;
+                        border-radius: 40px;
+                        border: none;
+
+                        color: white;
+                        font-size: 1.5rem;
                     }
                 }
             }
