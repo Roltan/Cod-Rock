@@ -594,10 +594,17 @@ header{
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: space-between;
     padding-left: 6.125vw;
+    height: 90vh;
     width: fit-content;
 
-    >img{
+    >div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    >div:first-child>img{
         align-self: center;
         width: 13.64vw;
         height: 13.64vw;
@@ -607,15 +614,16 @@ header{
         flex-direction: row;
         margin-top: 40px;
         margin-bottom: 11px;
+        gap: 5px;
     }
-    >p{
+    >div:first-child>p{
         font-family: Actay-Wait;
         font-size: 30px;
         font-weight: 700;
         line-height: 80%;
         margin-bottom: 30px;
     }
-    >button:not(button:last-child){
+    >div:first-child>button{
         box-sizing: border-box;
         border: 2px solid rgb(0, 0, 0);
         border-radius: 10px;
@@ -638,7 +646,6 @@ header{
         display: flex;
         flex-direction: row;
         gap: 24px;
-        margin-top: 65px;
         margin-bottom: 10px;
 
         div{
@@ -649,7 +656,7 @@ header{
             width: 13.54vw;
         }
     }
-    >button:last-child{
+    >div:last-child>button{
         display: flex;
         flex-direction: row;
         align-items: center;
