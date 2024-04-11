@@ -2,12 +2,19 @@
     font-family: Actay;
     src: url(../fonts/Actay/Actay-Regular.otf);
 }
+@font-face {
+    font-family: Actay-Wait;
+    src: url(../fonts/Actay/ActayWide-Bold.otf);
+}
 *{
     margin: 0;
     padding: 0;
     color: inherit;
     text-decoration: none;
     font-family: Actay;
+}
+body{
+    background-color: #F9F9F9;
 }
 
 header{
@@ -46,6 +53,11 @@ header{
         a:last-child{
             text-decoration-line: underline;
         }
+        a{
+            &:hover{
+                color: #7BFF5A;
+            }
+        }
     }
     .noAuth{
         gap: 2.7vw;
@@ -53,10 +65,18 @@ header{
         >a:first-child{
             background: rgba(117, 255, 52, 0.25);
             padding: 11px 21px;
+
+            &:hover{
+                background: rgb(116, 255, 52);
+            }
         }
         >a:last-child{
             background: rgb(123, 255, 90);
             padding: 11px 21px;
+
+            &:hover{
+                background: rgb(147, 254, 97);
+            }
         }
     }
     .Auth{
@@ -70,6 +90,129 @@ header{
                 height: 100%;
             }
         }
+    }
+}
+
+.index{
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+
+    .line{
+        position: absolute;
+        height: 100%;
+        right: 50%;
+        top: 0;
+    }
+    >div{
+        height: 100%;
+        width: 150vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        transition: .6s;
+        transform: translateX(-50vw);
+    }
+    .doing{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 50vw;
+
+        div{
+            box-sizing: border-box;
+            border-bottom: 10px solid rgb(0, 0, 0);
+            border-left: 2px solid rgb(0, 0, 0);
+            border-right: 2px solid rgb(0, 0, 0);
+            border-top: 2px solid rgb(0, 0, 0);
+            border-radius: 36px;
+            background: rgb(232, 254, 203);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 23px 45px 23px;
+            width: 30.83vw;
+            height: 20vw;
+
+            h1{
+                font-family: Actay-Wait;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 30px;
+            }
+            p{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 25px;
+            }
+        }
+    }
+    .advantages-wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 50vw;
+
+        .advantages{
+            width: 30.83vw;
+            height: 42.29vw;
+            padding: 0 24px;
+
+            box-sizing: border-box;
+            border-bottom: 10px solid rgb(0, 0, 0);
+            border-left: 2px solid rgb(0, 0, 0);
+            border-right: 2px solid rgb(0, 0, 0);
+            border-top: 2px solid rgb(0, 0, 0);
+            border-radius: 36px;
+            background: rgb(220, 254, 203);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            h1{
+                box-sizing: border-box;
+                border: 2px solid rgb(0, 0, 0);
+                border-radius: 0px 0px 30px 30px;
+                padding: 10px 20px 0;
+                border-top: none;
+
+                font-family: Actay-Wait;
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 30px;
+            }
+            h2{
+                font-family: Actay-Wait;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 30px;
+            }
+            p{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 25px;
+            }
+            img{
+                width: 55px;
+                transition: .3s;
+
+                &:hover{
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+    .postman{
+        height: 100%;
     }
 }
 
@@ -161,7 +304,7 @@ header{
         width: 100%;
         box-sizing: border-box;
 
-        background: rgb(255, 255, 255);
+        background: #F9F9F9;
 
         .card{
             display: flex;
@@ -184,6 +327,8 @@ header{
                 &>div:first-child{
                     width: 10.4vw;
                     height: 10.4vw;
+                    border: #000 solid 2px;
+                    border-radius: 13%;
                     img{
                         height: 100%;
                         width: 100%;
@@ -219,14 +364,23 @@ header{
                         align-items: center;
                     }
                     &>button{
-                        width: 139px;
-                        height: 50px;
+                        width: 7.23vw;
+                        height: 2.6vw;
                         background-color: #7BFF5A;
+                        
                         border-radius: 40px;
-                        border: none;
+                        border: #7BFF5A solid 2px;
 
-                        color: white;
+                        color: #F9F9F9;
                         font-size: 1.5rem;
+                        box-sizing: border-box;
+
+                        &:hover{
+                            box-shadow: 0px 5px 20px 0px rgb(123, 255, 90);
+                        }
+                        &:active{
+                            border: #000 solid 2px;
+                        }
                     }
                 }
             }
@@ -258,6 +412,7 @@ header{
 
             h1{
                 font-size: 3rem;
+                font-family: Actay-Wait;
                 font-weight: 700;
                 line-height: 61px;
             }
@@ -309,7 +464,6 @@ header{
         >div:last-child{
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
             margin-top: 30px;
             width: 100%;
@@ -325,6 +479,7 @@ header{
                 font-size: 1.5rem;
                 font-weight: 700;
                 line-height: 30px;
+                font-family: Actay-Wait;
             }
         }
     }
