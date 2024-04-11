@@ -218,6 +218,8 @@ header{
 
 .galary{
     padding: 50px 6.25vw 0;
+    position: relative;
+    overflow: hidden;
 
     .header{
         display: flex;
@@ -278,6 +280,7 @@ header{
         .sort{
             height: 100%;
             padding: 0 18px;
+            background-color: #F9F9F9;
 
             border: 1px solid rgb(0, 0, 0);
             border-radius: 10px;
@@ -296,6 +299,7 @@ header{
     }
 
     .listStuff{
+        position: relative;
         margin-top: 62px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -304,13 +308,12 @@ header{
         width: 100%;
         box-sizing: border-box;
 
-        background: #F9F9F9;
-
         .card{
             display: flex;
             flex-direction: column;
             width: fit-content;
             gap: 1.12vw;
+            background-color: #F9F9F9;
 
             padding: 20px;
             border-bottom: 10px solid rgb(0, 0, 0);
@@ -390,6 +393,29 @@ header{
                 line-height: 30px;
             }
         }
+    }
+
+    .eleps1{
+        position: absolute;
+        width: 1194px;
+        height: 1194px;
+        left: 1044px;
+        top: -136px;
+
+        filter: blur(400px);
+        background: rgb(220, 254, 203);
+        z-index: -1;
+    }
+    .eleps2{
+        position: absolute;
+        width: 1194px;
+        height: 1194px;
+        left: -597px;
+        top: 483px;
+
+        filter: blur(400px);
+        background: rgb(123, 255, 90);
+        z-index: -1;
     }
 }
 
@@ -668,5 +694,84 @@ header{
         font-size: 24px;
         font-weight: 400;
         line-height: 30px;
+    }
+}
+
+.LcabProd{
+    .LcabHide{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        gap: 10px;
+        height: 100vh;
+        z-index: 4;
+        left: -24vw;
+        top: 0;
+        background-color: #d8fbc8;
+        transition: .6s;
+
+        >section{
+            padding-top: 10px;
+        }
+        >div{
+            -webkit-mask-image: url(../img/arrowBotom.svg);
+                    mask-image: url(../img/arrowBotom.svg);
+            width: 33px;
+            height: 19px;
+            transform: rotate(-90deg);
+            background: #000;
+            mask-repeat: no-repeat;
+            mask-size: cover;
+            margin-top: 70px;
+        }
+        &:hover{
+            left: 0;
+            >div{
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .miShop{
+        height: 90vh;
+        width: 30vw;
+        box-sizing: border-box;
+        border-right: #000 solid 2px;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 6.125vw 0;
+
+        >div:first-child{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            font-family: Actay-Wait;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+
+            margin-bottom: 30px;
+        }
+        >div:not(div:first-child){
+            font-family: Actay-Wait;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-sizing: border-box;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 40px;
+            margin-top: 20px;
+
+            &:hover{
+                background: #7BFF5A;
+            }
+        }
     }
 }
