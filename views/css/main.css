@@ -424,7 +424,6 @@ header .Auth a img {
 .login .header > div:last-child {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   margin-top: 30px;
   width: 100%;
@@ -538,4 +537,74 @@ header .Auth a img {
 .login > div:last-child div img {
   height: 100%;
   width: 100%;
+}
+
+.LcabUser {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-left: 6.125vw;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.LcabUser > img {
+  align-self: center;
+  width: 13.64vw;
+  height: 13.64vw;
+}
+.LcabUser .user {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-bottom: 11px;
+}
+.LcabUser > p {
+  font-family: Actay-Wait;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 80%;
+  margin-bottom: 30px;
+}
+.LcabUser > button:not(button:last-child) {
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 7px;
+  margin-bottom: 10px;
+  gap: 5px;
+  width: 260px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+}
+.LcabUser .userFunc {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-top: 65px;
+  margin-bottom: 10px;
+}
+.LcabUser .userFunc div {
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: 13.54vw;
+}
+.LcabUser > button:last-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
 }/*# sourceMappingURL=main.css.map */
