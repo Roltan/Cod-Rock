@@ -20,7 +20,9 @@ const Profile = (props) => {
 
                 req.data.access_token && props.setToken(req.data.access_token)
                 setProfileData(({
-                    profile_name: req.data.name
+                    profile_name: req.data.name,
+                    profile_id: req.data.id,
+                    profile_role: req.data.role
                 }))
             
         } catch (error) {
@@ -31,6 +33,8 @@ const Profile = (props) => {
         <div>
             Профиль
             <p>Имя {profileData.profile_name}</p>
+            <p>Ид {profileData.profile_id}</p>
+            <p>Role {profileData.profile_role}</p>
             <p></p>
         </div>
      );

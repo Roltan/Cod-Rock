@@ -39,8 +39,9 @@ const Login = (props) => {
             email: "",
             password: ""
         }))
-
+        
         event.preventDefault()
+        Navigate('/')
     }
     function handleChange(event){
         const {value, name} = event.target

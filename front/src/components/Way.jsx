@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const MinDistanceComponent = ({ data, id, pvz, token}) => {
+  console.log(data)
   async function acceptOrder(a,b,c,d,e,f){
     try {
       const req = await axios({
@@ -28,6 +29,7 @@ const MinDistanceComponent = ({ data, id, pvz, token}) => {
       <h2>Минимальное расстояние</h2>
       {data.map((item, index) => (
         <div key={index}>
+          {console.log(item.distance)}
           <p>Список городов: {item.wayList.join(', ')}</p>
           <p>Расстояние: {item.distance}</p>
           <p>Конечный город: {item.final_city}</p>
@@ -42,6 +44,7 @@ const MinDistanceComponent = ({ data, id, pvz, token}) => {
 }
   
 const MinPriceComponent = ({ data, id, pvz}) => {
+  console.log(data)
   return(
     <div>
       <h2>Минимальная цена</h2>

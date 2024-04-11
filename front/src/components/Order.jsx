@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Info from './Way'
 import { MinDistanceComponent, MinPriceComponent, MinTimeComponent } from './Way';
 
 const Order = ({address, city, producer, id, token}) => {

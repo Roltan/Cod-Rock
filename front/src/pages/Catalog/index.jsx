@@ -4,7 +4,6 @@ import Card from '../../components/Card';
 
 
 const Catalog = ({items, onAddToCart, token}) => {
-    // console.log(items)
     // console.log(token)
     
     
