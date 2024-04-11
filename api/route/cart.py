@@ -62,7 +62,7 @@ def AcceptOrder():
         }
         return resp, 401
     
-    order = Orders.query.filter_by(id=id).first()
+    order = Orders.query.filter((Orders.stuff==id)&(Orders.user==GetID(user))).first()
     order.status = 'in way'
     order.storehouse = storehouse
     order.pvz = pvz
@@ -146,7 +146,7 @@ def CreateWay(respWay, storehouse, transport, iter):
         iter-=1
 
 # меняю пути из данных для расчёта в данные для таблиц
-def PrepWay(wayArr, pvz, user):
+def PrepWay(wayArr, pvz):
     resp = []
     for way in wayArr:
         iterResp = {
@@ -155,7 +155,10 @@ def PrepWay(wayArr, pvz, user):
             "initial_city": way["city"][0],
             "final_city": way["city"][-1],
             "wayList": way["city"],
-            "way": ''
+            "way": '',
+            "time": way.time_way,
+            "price": way.price_way,
+            "distance": way.distance_way,
         }
         wayString = ''
         for i in range(len(way["id"])-1):
@@ -311,8 +314,8 @@ def GetWay():
                 minDistance = el["distance"]
 
     fast = {
-        "minTime": PrepWay(minTimeWay, pvz, user),
-        'minPrice': PrepWay(minPriceWay, pvz, user),
-        'minDistance': PrepWay(minDistanceWay, pvz, user)
+        "minTime": PrepWay(minTimeWay, pvz),
+        'minPrice': PrepWay(minPriceWay, pvz),
+        'minDistance': PrepWay(minDistanceWay, pvz)
     }
     return fast

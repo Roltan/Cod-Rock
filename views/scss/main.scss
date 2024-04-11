@@ -1,0 +1,436 @@
+@font-face {
+    font-family: Actay;
+    src: url(../fonts/Actay/Actay-Regular.otf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    font-family: Actay;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 6.25vw;
+
+    background: rgb(255, 255, 255);
+
+    .logo{
+        width: 179.53px;
+        height: 70px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    >div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        color: rgb(0, 0, 0);
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0%;
+    }
+    >div:first-child{
+        gap: 2.34vw;
+
+        a:last-child{
+            text-decoration-line: underline;
+        }
+    }
+    .noAuth{
+        gap: 2.7vw;
+
+        >a:first-child{
+            background: rgba(117, 255, 52, 0.25);
+            padding: 11px 21px;
+        }
+        >a:last-child{
+            background: rgb(123, 255, 90);
+            padding: 11px 21px;
+        }
+    }
+    .Auth{
+        gap: 1vw;
+
+        a{
+            width: 55px;
+            height: 55px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.galary{
+    padding: 50px 6.25vw 0;
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 3.125vw;
+
+        .search{
+            width: 43.125vw;
+            height: 100%;
+            border-radius: 10px;
+            background: rgb(0, 0, 0);
+            padding: 3px;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+
+            input{
+                border: none;
+                border-radius: 10px;
+                width: 100%;
+                height: 98%;
+                padding-top: 6px;
+                padding-left: 21px;
+                box-sizing: border-box;
+
+                font-size: 1.5rem;
+                font-weight: 400;
+                line-height: 30px;
+
+                &::placeholder{
+                    color: rgb(0, 0, 0);
+                    font-family: Actay;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                    line-height: 30px;
+                }
+            }
+
+            button{
+                background: none;
+                border: none;
+                width: 2vw;
+                height: 2vw;
+                padding-right: 10px;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .sort{
+            height: 100%;
+            padding: 0 18px;
+
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 30px;
+
+            .green{
+                color: rgb(123, 255, 90);
+            }
+        }
+    }
+
+    .listStuff{
+        margin-top: 62px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        row-gap: 3.125vw;
+        width: 100%;
+        box-sizing: border-box;
+
+        background: rgb(255, 255, 255);
+
+        .card{
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            gap: 1.12vw;
+
+            padding: 20px;
+            border-bottom: 10px solid rgb(0, 0, 0);
+            border-left: 2px solid rgb(0, 0, 0);
+            border-right: 2px solid rgb(0, 0, 0);
+            border-top: 2px solid rgb(0, 0, 0);
+            border-radius: 43px;
+
+            &>div:first-child{
+                display: flex;
+                flex-direction: row;
+                gap: 1.23vw;
+
+                &>div:first-child{
+                    width: 10.4vw;
+                    height: 10.4vw;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                &>div:last-child{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &>div:first-child{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        .img{
+                            width: 2.6vw;
+                            height: 2.6vw;
+                            img{
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    &>p{
+                        font-size: 3rem;
+                        font-weight: 700;
+                        line-height: 61px;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    &>button{
+                        width: 139px;
+                        height: 50px;
+                        background-color: #7BFF5A;
+                        border-radius: 40px;
+                        border: none;
+
+                        color: white;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            &>div:last-child{
+                font-size: 1.5rem;
+                font-weight: 400;
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+.login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+
+    .header{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        >div:first-child{
+            display: flex;
+            flex-direction: row;
+            margin-top: 4.375vw;
+
+            h1{
+                font-size: 3rem;
+                font-weight: 700;
+                line-height: 61px;
+            }
+            h2{
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 30px;
+                margin-top: -10px;
+            }
+            >div:last-child{
+                display: flex;
+                align-items: start;
+                margin-left: 20px;
+            }
+            input[type="checkbox"]{
+                display: none;
+    
+                &+label{
+                    transition: .3s;
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+        
+                    width: 52px;
+                    height: 34px;
+                    border: #000 solid 5px;
+                    padding: 0 3px;
+                    box-sizing: border-box;
+                    border-radius: (34px/2);
+    
+                    div{
+                        transition: .3s;
+                        width: 17px;
+                        height: 17px;
+                        border: #7BFF5A solid 5px;
+                        border-radius: 100%;
+                        box-sizing: border-box;
+                    }
+                }
+                &:checked+label{
+                    border-color: #7BFF5A;
+                    div{
+                        margin-left: (52px-10px-6px-17px);
+                    }
+                }
+            }
+        }
+        >div:last-child{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            width: 100%;
+
+            h2{
+                font-size: 1.5rem;
+                font-weight: 400;
+                line-height: 30px;
+            }
+            
+
+            a{
+                font-size: 1.5rem;
+                font-weight: 700;
+                line-height: 30px;
+            }
+        }
+    }
+
+    form{
+        padding: 0 3.25vw 0 6.25vw;
+        box-sizing: border-box;
+        width: 42vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input{
+            height: 3.7vw;
+            box-sizing: border-box;
+            border: 3px solid rgb(0, 0, 0);
+            border-radius: 40px;
+            background: rgb(255, 255, 255);
+            margin-top: 30px;
+
+            font-size: 1.5rem;
+            font-weight: 400;
+
+            &::placeholder{
+                font-family: Actay;
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+        }
+        input:not(input[type="submit"]),input:not(input[type="checkbox"]){
+            width: 100%;
+            padding: 0 3.54vw;
+        }
+        input[type="submit"]{
+            padding: 20px 0;
+            width: 60%;
+        }
+        >a{
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 30px;
+
+            width: 100%;
+            margin-top: 30px;
+            float: left;
+        }
+        .checkbox{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            margin-top: 30px;
+
+            input[type="checkbox"]{
+                display: none;
+            
+                &+label{
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: start;
+                    gap: 7px;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    line-height: 30px;
+                }
+                &+label::before{
+                    content: '';
+                    width: 30px;
+                    height: 30px;
+                    border: 3px solid rgb(0, 0, 0);
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                }
+                &:checked+label::before{
+                    background-color: #7BFF5A;
+                    background-image: url(../img/checkbox.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 18px;
+                }
+                
+            }
+        }
+    }
+
+    &>div:last-child{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 58vw;
+
+        background-color: #7BFF5A;
+        padding: 0 2.6vw;
+        box-sizing: border-box;
+        div{
+            width: 100%;
+            height: 35vw;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
