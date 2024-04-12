@@ -17,6 +17,7 @@ const PersonalUser = (props) => {
             localStorage.removeItem('token')
             alert('Выход прошло успешно')
             navigate('/galary')
+            window.location.reload()
         } catch (error) {
             alert('Ошибка при выходе из аккаунта, повторите попытку')
             console.log(error.response)
@@ -54,7 +55,7 @@ const PersonalUser = (props) => {
                             <p>Избранное</p>
                         </div>
                     </div>
-                    <button onClick={logMeOut}>
+                    <button onClick={logMeOut} className='cup'>
                         <img src="../img/logout.svg" alt="logout"/>
                         <p >Выход из аккаунта</p>
                     </button>

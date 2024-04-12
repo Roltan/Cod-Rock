@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import { Link, useNavigate} from 'react-router-dom'
 import useToken from '../../components/useToken'
+import AppContext from '../../context'
 
 const Registration = () => {
     const {setToken} = useToken()

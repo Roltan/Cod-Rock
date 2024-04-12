@@ -13,6 +13,9 @@
   text-decoration: none;
   font-family: Actay;
 }
+*:focus {
+  outline: none;
+}
 
 body {
   background-color: #F9F9F9;
@@ -46,9 +49,6 @@ header > div {
 }
 header > div:first-child {
   gap: 2.34vw;
-}
-header > div:first-child a:last-child {
-  text-decoration-line: underline;
 }
 header > div:first-child a:hover {
   color: #7BFF5A;
@@ -93,7 +93,7 @@ header .Auth a img {
   right: 50%;
   top: 0;
 }
-.index > div {
+.index > .noClick {
   height: 100%;
   width: 150vw;
   display: flex;
@@ -101,6 +101,8 @@ header .Auth a img {
   justify-content: space-between;
   align-items: center;
   transition: 0.6s;
+}
+.index > .noClick.click {
   transform: translateX(-50vw);
 }
 .index .doing {
@@ -494,12 +496,6 @@ header .Auth a img {
 .login form input:not(input[type=submit]), .login form input:not(input[type=checkbox]) {
   width: 100%;
   padding: 0 3.54vw;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.login form input:not(input[type=submit]):hover, .login form input:not(input[type=checkbox]):hover {
-  background-color: #7BFF5A;
-  color: #ffffff;
 }
 .login form input[type=submit] {
   padding: 20px 0;
@@ -638,18 +634,16 @@ header .Auth a img {
   align-items: center;
   gap: 6px;
   align-self: center;
-  cursor: pointer;
   background: none;
   border: none;
   font-size: 24px;
   font-weight: 400;
   line-height: 30px;
-  transition: 0.3s;
-}
-.LcabUser > div:last-child > button:hover {
-  opacity: 0.6;
 }
 
+.LcabProd {
+  display: flex;
+}
 .LcabProd .LcabHide {
   position: absolute;
   display: flex;
@@ -720,4 +714,675 @@ header .Auth a img {
 }
 .LcabProd .miShop > div:not(div:first-child):hover {
   background: #7BFF5A;
+}
+.LcabProd .redactShop {
+  height: 300vh;
+  width: 43vw;
+  box-sizing: border-box;
+  border-right: #000 solid 2px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 6.125vw 0;
+}
+.LcabProd .redactShop > div:first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: Actay-Wait;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.LcabProd .redactShop > div:first-child > div {
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-radius: 0px 0px 30px 30px;
+  background: rgb(232, 254, 203);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 55px;
+}
+.LcabProd .redactShop > div:not(div:first-child) {
+  font-family: Actay-Wait;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  margin-top: 20px;
+}
+.LcabProd .redactShop > div:not(div:first-child):hover {
+  background: #7BFF5A;
+}
+.LcabProd .redactShop .active {
+  background-color: #7BFF5A;
+}
+.LcabProd .readactPanel {
+  font-size: 24px;
+  width: 100%;
+  font-family: Actay-Wait !important;
+}
+.LcabProd .readactPanel .containerPanel {
+  padding: 40px;
+}
+.LcabProd .readactPanel .containerPanel .title {
+  font-family: Actay-Wait;
+  text-align: center;
+}
+.LcabProd .readactPanel .containerPanel .input {
+  width: 830px;
+  margin: 0 auto;
+}
+.LcabProd .readactPanel .containerPanel .input p {
+  font-family: Actay-Wait;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  text-align: center;
+  background-color: white;
+  z-index: 5;
+  position: relative;
+}
+.LcabProd .readactPanel .containerPanel .input input {
+  z-index: 0;
+  width: 830px;
+  transform: translateY(-14px);
+  font-size: 24px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-radius: 0px 0px 30px 30px;
+  padding: 15px 30px 10px 30px;
+}
+.LcabProd .readactPanel .containerPanel .input input::-moz-placeholder {
+  color: rgb(134, 134, 134);
+  font-family: Actay;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: justify;
+}
+.LcabProd .readactPanel .containerPanel .input input::placeholder {
+  color: rgb(134, 134, 134);
+  font-family: Actay;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: justify;
+}
+.LcabProd .readactPanel .containerPanel .flex-input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+.LcabProd .readactPanel .containerPanel .btn {
+  border: none;
+  color: white;
+  background-color: #7BFF5A;
+  border-radius: 40px;
+  padding: 12px 65px;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: 0.3s;
+  margin: 0 auto;
+  font-family: Actay-Wait;
+}
+.LcabProd .readactPanel .containerPanel .btn:hover {
+  color: white;
+  border: 1px solid #54AE3E;
+}
+.LcabProd .readactPanel .containerPanel .btn:active {
+  background-color: #54AE3E;
+}
+.LcabProd .readactPanel .containerPanel .grid-input {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.LcabProd .readactPanel .containerPanel .grid-input .input-g p {
+  font-family: Actay-Wait;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  text-align: center;
+  background-color: white;
+  z-index: 5;
+  position: relative;
+  text-align: center;
+}
+.LcabProd .readactPanel .containerPanel .grid-input .input-g input {
+  z-index: 0;
+  transform: translateY(-14px);
+  font-size: 24px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-radius: 0px 0px 30px 30px;
+  padding: 15px 30px 10px 30px;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .input-g {
+  margin: 0 !important;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .input-g input {
+  z-index: 0;
+  transform: translateY(-14px);
+  font-size: 24px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-radius: 0px 0px 30px 30px;
+  padding: 15px 30px 10px 30px;
+  width: 100% !important;
+}
+.LcabProd .readactPanel .containerPanel .input-g p {
+  font-family: Actay-Wait;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  text-align: center;
+  background-color: white;
+  z-index: 5;
+  position: relative;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible {
+  margin-top: 20px;
+  display: flex;
+  gap: 100px;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .input {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  margin: 0 !important;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .input p {
+  justify-content: space-between;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .input input {
+  width: 467px;
+  transform: translateY(-21px);
+  font-size: 24px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-radius: 0px 0px 30px 30px;
+  padding: 30px 30px 14px 30px;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card {
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 1.12vw;
+  background-color: #F9F9F9;
+  padding: 20px;
+  border-bottom: 10px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 43px;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 1.23vw;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:first-child {
+  width: 10.4vw;
+  height: 10.4vw;
+  border: #000 solid 2px;
+  border-radius: 13%;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:first-child img {
+  height: 100%;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > div:first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > div:first-child .img {
+  width: 2.6vw;
+  height: 2.6vw;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > div:first-child .img img {
+  height: 100%;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > p {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 61px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > button {
+  width: 7.23vw;
+  height: 2.6vw;
+  background-color: #7BFF5A;
+  border-radius: 40px;
+  border: #7BFF5A solid 2px;
+  color: #F9F9F9;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > button:hover {
+  box-shadow: 0px 5px 20px 0px rgb(123, 255, 90);
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:first-child > div:last-child > button:active {
+  border: #000 solid 2px;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card > div:last-child {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 30px;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card .footer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card .footer-card span {
+  font-size: 20PX;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card .footer-card div {
+  display: flex;
+  flex-direction: column;
+}
+.LcabProd .readactPanel .containerPanel .pre-visible .card-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.LcabProd .readactPanel .containerPanel .info {
+  font-size: 40px;
+  font-family: Actay-Wait;
+}
+.LcabProd .readactPanel .containerPanel .btn-redact {
+  margin: 0;
+  margin-top: 15px;
+  font-family: Actay-Wait;
+}
+.LcabProd .readactPanel .containerPanel .editCard {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel {
+  width: 508px;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-sizing: border-box;
+  border-bottom: 20px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  padding: 20px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex .input-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex .input-flex input {
+  width: 260px;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  padding: 10px 15px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex .input-flex input::-moz-placeholder {
+  color: rgb(158, 158, 158);
+  font-family: Actay;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: justify;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex .input-flex input::placeholder {
+  color: rgb(158, 158, 158);
+  font-family: Actay;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: justify;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .edit-flex .input-file {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  width: 145px;
+  height: 92px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel .low-input {
+  margin-top: 11px;
+  width: 93%;
+  height: 50px;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+  padding: 10px 15px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .editPanel input {
+  font-size: 24px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card {
+  transform: translateX(-30px);
+  display: flex;
+  flex-direction: column;
+  width: 643.35px;
+  height: 426.91px;
+  gap: 2.12vw;
+  background-color: #F9F9F9;
+  padding: 20px;
+  border-bottom: 10px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 43px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 7.23vw;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:first-child {
+  width: 257px;
+  height: 257px;
+  border: #000 solid 2px;
+  border-radius: 13%;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:first-child img {
+  height: 100%;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > div:first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > div:first-child .img {
+  width: 64px;
+  height: 64px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > div:first-child .img img {
+  height: 100%;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > p {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 61px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > button {
+  padding: 15px 34px;
+  background-color: #7BFF5A;
+  border-radius: 40px;
+  border: #7BFF5A solid 2px;
+  color: #F9F9F9;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > button:hover {
+  box-shadow: 0px 5px 20px 0px rgb(123, 255, 90);
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:first-child > div:last-child > button:active {
+  border: #000 solid 2px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card > div:last-child {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 30px;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card .footer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card .footer-card span {
+  font-size: 20PX;
+}
+.LcabProd .readactPanel .containerPanel .editCard .previewPanel .card .footer-card div {
+  display: flex;
+  flex-direction: column;
+}
+.LcabProd .readactPanel .containerPanel .formEdit {
+  box-sizing: border-box;
+  border-bottom: 20px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .line {
+  border: 1px solid black;
+  width: 100%;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .oneForm {
+  padding: 15px 40px;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .oneForm input {
+  font-size: 24PX;
+  border: none;
+  width: 1000px;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .oneForm input::-moz-placeholder {
+  font-family: "Actay";
+}
+.LcabProd .readactPanel .containerPanel .formEdit .oneForm input::placeholder {
+  font-family: "Actay";
+}
+.LcabProd .readactPanel .containerPanel .formEdit .oneForm p {
+  font-family: Actay-Wait;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .btn-store {
+  margin: 15px 30px;
+  border: 1px solid transparent;
+}
+.LcabProd .readactPanel .containerPanel .formEdit .btn-store:hover {
+  border: 1px solid #54AE3E;
+}
+
+.under {
+  text-decoration: underline;
+}
+
+.aActive {
+  color: #7BFF5A;
+}
+
+.pvz {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 785px;
+  padding: 30px;
+  border-bottom: 20px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+}
+.pvz button {
+  font-size: 24px;
+  background-color: #7BFF5A;
+  border-radius: 20px;
+  padding: 15px;
+  color: white !important;
+  border: none;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+.pvz button:hover {
+  border: 1px solid #54AE3E;
+}
+.pvz button:active {
+  background-color: #54AE3E;
+}
+.pvz .del {
+  background-color: red !important;
+}
+.pvz .del:active {
+  opacity: 0.7;
+}
+.pvz .hide {
+  background-color: #4d4d4d;
+  margin: 10px 0;
+}
+.pvz .pvz-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pvz .pvz-2 {
+  margin-top: 20px;
+}
+.pvz .pvz-2 input {
+  margin: 15px 0;
+  font-size: 24px;
+  border: none;
+  background-color: #c3c3c3;
+  padding: 10px;
+  border-radius: 15px;
+}
+.pvz .pvz-2 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-flex {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pvz-3 {
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 30px;
+  border-bottom: 20px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-top: 2px solid rgb(0, 0, 0);
+  border-radius: 40px;
+}
+.pvz-3 button {
+  font-size: 24px;
+  background-color: #7BFF5A;
+  border-radius: 20px;
+  padding: 15px;
+  color: white !important;
+  border: none;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+.pvz-3 button:hover {
+  border: 1px solid #54AE3E;
+}
+.pvz-3 button:active {
+  background-color: #54AE3E;
+}
+.pvz-3 .del {
+  background-color: red !important;
+}
+.pvz-3 .del:active {
+  opacity: 0.7;
+}
+.pvz-3 .hide {
+  background-color: #4d4d4d;
+  margin: 10px 0;
+}
+.pvz-3 .pvz-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pvz-3 .pvz-3 {
+  margin-top: 20px;
+}
+.pvz-3 .pvz-3 input {
+  margin: 15px 0;
+  font-size: 24px;
+  border: none;
+  background-color: #c3c3c3;
+  padding: 10px;
+  border-radius: 15px;
+}
+.pvz-3 .pvz-3 form {
+  display: flex;
+  flex-direction: column;
+}
+.pvz-3 .pvz-3 .pvz-4 {
+  width: 350px !important;
+}
+
+.store-input {
+  margin: 15px 0;
+  font-size: 24px;
+  border: none;
+  background-color: #c3c3c3;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.back {
+  margin-right: 10px;
+}
+
+.cup {
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

@@ -6,15 +6,14 @@ import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Registration from "./pages/Registration";
-import AddStuff from "./pages/AddStuff";
-import Store from "./pages/AddStore";
-import AddPvz from "./pages/AddPvz";
 import Catalog from "./pages/Catalog";
 import GetPvz from './components/GetPvz';
 import AppContext from "./context";
 import Edit from './pages/Edit';
+import Main from './pages/Main';
 import PesrsonalUser from './pages/PersonalUser';
 import PesrsonalProducer from './pages/PersonalProducer';
+import Add from './pages/Add';
 
 
 function App() {
@@ -96,21 +95,16 @@ function App() {
         
         <Header token={removeToken} />
           <Routes>
-            <Route path="/addstuff" element={<AddStuff token={token} />} />
-            <Route path="/addstore" element={<Store token={token} />} />
-            <Route path="/addpvz" element={<AddPvz token={token} />} />
+            <Route path="/add" element={<Add />} />
+            <Route path="/" element={<Main />} />
             <Route path="/getPvz" element={<GetPvz token={token} />} />
-            <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
-
-            <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
-
-            <Route path="/login" element={<Login setToken={token} token={token} />} />
-            <Route path="/register" element={<Registration token={token} />} />
-            <Route path='/galary' element={<Catalog items={items} onAddToCart={onAddToCart} token={token} />}/>
-            <Route path='/edit' element={<Edit token={token} />}/>
-            <Route path='/user' element={<PesrsonalUser  />}/>
-            <Route path='/producer' element={<PesrsonalProducer  />}/>
-            {/* <Route path="/decoration" element={<Accept token={token} />} /> */}
+            <Route path="/profile" element={<Profile setToken={setToken}/>}/>
+            <Route path="/login" element={<Login setToken={token} />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path='/galary' element={<Catalog items={items} onAddToCart={onAddToCart} />}/>
+            <Route path='/edit' element={<Edit />}/>
+            <Route path='/user' element={<PesrsonalUser />}/>
+            <Route path='/producer' element={<PesrsonalProducer />}/>
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>

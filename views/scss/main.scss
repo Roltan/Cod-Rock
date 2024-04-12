@@ -54,7 +54,7 @@ header{
         gap: 2.34vw;
 
         a:last-child{
-            text-decoration-line: underline;
+            
         }
         a{
             &:hover{
@@ -1303,4 +1303,10 @@ header{
             }
         }
     }
+}
+.under{
+    text-decoration: underline;
+}
+.aActive{
+    color:#7BFF5A;
 }

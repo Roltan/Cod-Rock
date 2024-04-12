@@ -80,4 +80,4 @@ const MinTimeComponent = ({ data, id, pvz}) => {
   )
 }
   
-  export { MinDistanceComponent, MinPriceComponent, MinTimeComponent };
+export { MinDistanceComponent, MinPriceComponent, MinTimeComponent };

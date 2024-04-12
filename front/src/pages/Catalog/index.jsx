@@ -3,7 +3,7 @@ import Card from '../../components/Card';
 
 
 
-const Catalog = ({items, onAddToCart, token}) => {
+const Catalog = ({items, onAddToCart}) => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
 
@@ -42,7 +42,7 @@ const Catalog = ({items, onAddToCart, token}) => {
                 return item.name.toLowerCase().includes(searchTerm.toLowerCase()) 
                 })
                 .map((item, index) => (
-                    <Card key={index} {...item} token={token} onPlus={(id) => onAddToCart(id)} />
+                    <Card key={index} {...item} onPlus={(id) => onAddToCart(id)} />
                 ))}
 
             </div>

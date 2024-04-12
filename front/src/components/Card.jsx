@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Order from './Order'
 
-const Card = ({id, name, photo, price, size, mass, description, producer, onPlus, token}) => {
+const Card = ({id, name, photo, price, size, mass, description, producer, onPlus}) => {
     const[isCart, setIsCart] = React.useState(false)
     const[pvz, setPvz] = React.useState([])
   

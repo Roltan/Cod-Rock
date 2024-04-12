@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppContext from "../../context";
 import React from 'react'
 import axios from 'axios'
@@ -14,7 +14,7 @@ const PersonalProducer = () => {
     React.useEffect(()=>{
         async function fetchUser(){
             try {
-                const req = await axios.get('http://127.0.0.1:3001/user', {
+                const req = await axios('http://127.0.0.1:3001/user', {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }})
@@ -24,7 +24,7 @@ const PersonalProducer = () => {
             }
         }
         fetchUser()
-    })
+    }, [token])
     async function logMeOut() {
         try {
             const req = await axios({
@@ -44,7 +44,6 @@ const PersonalProducer = () => {
     }
     return ( 
         <>
-        {console.log()}
             {profileData.profile_role === 'producer' ? (
                 <section class="LcabProd">
                 <aside class="LcabHide">
@@ -67,7 +66,7 @@ const PersonalProducer = () => {
                         </div>
                         
                         <div>
-                            <button onClick={logMeOut}>
+                            <button onClick={logMeOut} className="cup">
                                 <img src="../img/logout.svg" alt=""/>
                                 <p>Выход из аккаунта</p>
                             </button>
@@ -81,21 +80,25 @@ const PersonalProducer = () => {
                         <h1>Мой магазин</h1>
                         <img src="../img/User.svg" alt=""/>
                     </div>
+                    
                     <div>
-                        Редактировать
+                        <Link to='/edit'>
+                            Редактировать
+                        </Link>
                     </div>
                     <div>
-                        Добавить
+                        <Link to='/add'>
+                            Добавить
+                        </Link>
                     </div>
                 </div>
                 </section>
 
             ) : (
-                ''
-                // <>
-                //     {navigate('/galary')}
-                //     {alert('Отказано в доступе')}
-                // </>  
+                <>
+                    {navigate('/galary')}
+                    {alert('Отказано в доступе')}
+                </>  
             )}
         </>
      );
