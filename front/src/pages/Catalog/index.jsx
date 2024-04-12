@@ -36,114 +36,17 @@ const Catalog = ({items, onAddToCart, token}) => {
             </div>
 
             <div class="listStuff">
-                
-            {/* {
-                 items.map((item, index) => <Card key={index} {...item} token={token} onPlus={(id) => onAddToCart(id)}/>)   
-            } */}
+
             {items
                 .filter(item => {
-                // Фильтрация по строке поиска: проверка наличия подстроки в названии или описании
                 return item.name.toLowerCase().includes(searchTerm.toLowerCase()) 
                 })
                 .map((item, index) => (
-                <Card key={index} {...item} token={token} onPlus={(id) => onAddToCart(id)} />
+                    <Card key={index} {...item} token={token} onPlus={(id) => onAddToCart(id)} />
                 ))}
-                {/* <div class="card">
-                    <div>
-                        <div>
-                            <img src="../img/stuff.png" alt="stuff" />
-                        </div>
-                        <div>
-                            <div>
-                                <div class="img"><img src="../img/User.svg" alt="" /></div>
-                                <p>Продовец</p>
-                            </div>
-                            <p>900р</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Название</p>
-                        <p>Продано 0</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div>
-                            <img src="../img/stuff.png" alt="stuff" />
-                        </div>
-                        <div>
-                            <div>
-                                <div class="img"><img src="../img/User.svg" alt="" /></div>
-                                <p>Продовец</p>
-                            </div>
-                            <p>900р</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Название</p>
-                        <p>Продано 0</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div>
-                            <img src="../img/stuff.png" alt="stuff" />
-                        </div>
-                        <div>
-                            <div>
-                                <div class="img"><img src="../img/User.svg" alt="" /></div>
-                                <p>Продовец</p>
-                            </div>
-                            <p>900р</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Название</p>
-                        <p>Продано 0</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div>
-                            <img src="../img/stuff.png" alt="stuff" />
-                        </div>
-                        <div>
-                            <div>
-                                <div class="img"><img src="../img/User.svg" alt="" /></div>
-                                <p>Продовец</p>
-                            </div>
-                            <p>900р</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Название</p>
-                        <p>Продано 0</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div>
-                            <img src="../img/stuff.png" alt="stuff" />
-                        </div>
-                        <div>
-                            <div>
-                                <div class="img"><img src="../img/User.svg" alt="" /></div>
-                                <p>Продовец</p>
-                            </div>
-                            <p>900р</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Название</p>
-                        <p>Продано 0</p>
-                    </div>
-                </div> */}
+
             </div>
         </div>
-        // <div>
-        //     Каталог продуктов
-        //    
-        // </div>
      );
 }
  

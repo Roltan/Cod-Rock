@@ -12,6 +12,9 @@
     color: inherit;
     text-decoration: none;
     font-family: Actay;
+    &:focus{
+        outline: none;
+    }
 }
 body{
     background-color: #F9F9F9;
@@ -698,6 +701,7 @@ header{
 }
 
 .LcabProd{
+    display: flex;
     .LcabHide{
         position: absolute;
         display: flex;
@@ -706,7 +710,7 @@ header{
         gap: 10px;
         height: 100vh;
         z-index: 4;
-        left: -24vw;
+        left: -20vw;
         top: 0;
         background-color: #d8fbc8;
         transition: .6s;
@@ -771,6 +775,531 @@ header{
 
             &:hover{
                 background: #7BFF5A;
+            }
+        }
+    }
+    .redactShop{
+        height: 90vh;
+        width: 43vw;
+        box-sizing: border-box;
+        border-right: #000 solid 2px;
+        display: flex;
+        flex-direction: column;
+        padding: 28px 6.125vw 0;
+
+        >div:first-child{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Actay-Wait;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+
+            margin-bottom: 30px;
+            &>div{
+                box-sizing: border-box;
+                border-bottom: 2px solid rgb(0, 0, 0);
+                border-left: 2px solid rgb(0, 0, 0);
+                border-right: 2px solid rgb(0, 0, 0);
+                border-radius: 0px 0px 30px 30px;
+                background: rgb(232, 254, 203);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 55px;
+            }
+        }
+        >div:not(div:first-child){
+            font-family: Actay-Wait;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+            padding: 11px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-sizing: border-box;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 40px;
+            margin-top: 20px;
+
+            &:hover{
+                background: #7BFF5A;
+            }
+        }
+        .active{
+            background-color: #7BFF5A;
+        }
+    }
+    .readactPanel{
+        font-size: 24px;
+        width: 100%;
+        font-family: Actay-Wait !important;
+        .containerPanel{
+            padding: 40px;
+            .title{
+                font-family: Actay-Wait;
+                text-align: center;
+            }
+            .input{
+                width: 830px;
+                margin: 0 auto;
+                p{
+                    font-family: Actay-Wait;
+                    box-sizing: border-box;
+                    border: 2px solid rgb(0, 0, 0);
+                    border-radius: 40px;
+                    text-align: center;
+                    background-color: white;
+                    z-index: 5;
+                    position: relative;
+                }
+                input{
+                    z-index: 0;
+                    width: 830px;
+                    transform: translateY(-14px);
+                    font-size: 24px;
+                    box-sizing: border-box;
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    border-left: 2px solid rgb(0, 0, 0);
+                    border-right: 2px solid rgb(0, 0, 0);
+                    border-radius: 0px 0px 30px 30px;
+                    padding: 15px 30px 10px 30px;
+
+                }
+                input::placeholder{
+                    color: rgb(134, 134, 134);
+                    font-family: Actay;
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 30px;
+                    letter-spacing: 0%;
+                    text-align: justify;
+                }
+            }
+            .flex-input{
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 70px;
+            }
+            .btn{
+                color: white;
+                background-color: #7BFF5A;
+                border-radius: 40px;   
+                padding: 12px 65px; 
+                width: fit-content;
+                transition:  .3s;
+                margin: 0 auto;
+                font-family: Actay-Wait;
+                &:hover{
+                    color: white;
+                    // background-color: rgb(255, 255, 255);
+                    border: 1px solid #54AE3E   ;
+                }
+                &:active{
+                    background-color: #54AE3E;
+                }
+            }
+            .grid-input{
+                margin-top: 40px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                .input-g{
+                    p{
+                        font-family: Actay-Wait;
+                        box-sizing: border-box;
+                        border: 2px solid rgb(0, 0, 0);
+                        border-radius: 40px;
+                        text-align: center;
+                        background-color: white;
+                        z-index: 5;
+                        position: relative;
+                        text-align: center;
+                    }
+                    input{
+                        z-index: 0;
+                        transform: translateY(-14px);
+                        font-size: 24px;
+                        box-sizing: border-box;
+                        border-bottom: 2px solid rgb(0, 0, 0);
+                        border-left: 2px solid rgb(0, 0, 0);
+                        border-right: 2px solid rgb(0, 0, 0);
+                        border-radius: 0px 0px 30px 30px;
+                        padding: 15px 30px 10px 30px;
+                        width: 100%;
+                    }
+                }
+                
+            }
+            .input-g{
+                margin: 0 !important;
+                width: 100%;
+                input{
+                    z-index: 0;
+                    transform: translateY(-14px);
+                    font-size: 24px;
+                    box-sizing: border-box;
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    border-left: 2px solid rgb(0, 0, 0);
+                    border-right: 2px solid rgb(0, 0, 0);
+                    border-radius: 0px 0px 30px 30px;
+                    padding: 15px 30px 10px 30px;
+                    width: 100% !important;
+                }
+                p{
+                    font-family: Actay-Wait;
+                    box-sizing: border-box;
+                    border: 2px solid rgb(0, 0, 0);
+                    border-radius: 40px;
+                    text-align: center;
+                    background-color: white;
+                    z-index: 5;
+                    position: relative;
+                    width: 100%;
+                }
+            }
+            .pre-visible{
+                margin-top: 20px;
+                display: flex;
+                gap: 100px;
+                .input{
+                    width: fit-content !important;
+                    margin: 0 !important;
+                        p{
+                        justify-content: space-between;
+                        padding: 10px 22px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    input{
+                        width: 467px;
+                        transform: translateY(-21px);
+                        font-size: 24px;
+                        box-sizing: border-box;
+                        border-bottom: 2px solid rgb(0, 0, 0);
+                        border-left: 2px solid rgb(0, 0, 0);
+                        border-right: 2px solid rgb(0, 0, 0);
+                        border-radius: 0px 0px 30px 30px;
+                        padding: 30px 30px 14px 30px;
+                    }
+                }
+                .card{
+                    display: flex;
+                    flex-direction: column;
+                    width: fit-content;
+                    gap: 1.12vw;
+                    background-color: #F9F9F9;
+        
+                    padding: 20px;
+                    border-bottom: 10px solid rgb(0, 0, 0);
+                    border-left: 2px solid rgb(0, 0, 0);
+                    border-right: 2px solid rgb(0, 0, 0);
+                    border-top: 2px solid rgb(0, 0, 0);
+                    border-radius: 43px;
+        
+                    &>div:first-child{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 1.23vw;
+        
+                        &>div:first-child{
+                            width: 10.4vw;
+                            height: 10.4vw;
+                            border: #000 solid 2px;
+                            border-radius: 13%;
+                            img{
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                        &>div:last-child{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            align-items: center;
+        
+                            &>div:first-child{
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+        
+                                .img{
+                                    width: 2.6vw;
+                                    height: 2.6vw;
+                                    img{
+                                        height: 100%;
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                            &>p{
+                                font-size: 3rem;
+                                font-weight: 700;
+                                line-height: 61px;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            &>button{
+                                width: 7.23vw;
+                                height: 2.6vw;
+                                background-color: #7BFF5A;
+                                
+                                border-radius: 40px;
+                                border: #7BFF5A solid 2px;
+        
+                                color: #F9F9F9;
+                                font-size: 1.5rem;
+                                box-sizing: border-box;
+        
+                                &:hover{
+                                    box-shadow: 0px 5px 20px 0px rgb(123, 255, 90);
+                                }
+                                &:active{
+                                    border: #000 solid 2px;
+                                }
+                            }
+                        }
+                    }
+                    &>div:last-child{
+                        font-size: 1.5rem;
+                        font-weight: 400;
+                        line-height: 30px;
+                    }
+                    .footer-card{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        span{
+                            font-size: 20PX;
+                        }
+                        div{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                    }
+                }
+                .card-block{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+            }
+            .info{
+                font-size: 40px;
+                font-family: Actay-Wait;
+            }
+            .btn-redact{
+                margin: 0;
+                margin-top: 15px;
+                font-family: Actay-Wait;
+            }
+            .editCard{
+                margin-top: 40px;
+                display: flex;
+                align-items: center;
+                .editPanel{
+                    width: 508px;
+                    height: fit-content;
+                    box-sizing: border-box;
+                    border-bottom: 20px solid rgb(0, 0, 0);
+                    border-left: 2px solid rgb(0, 0, 0);
+                    border-right: 2px solid rgb(0, 0, 0);
+                    border-top: 2px solid rgb(0, 0, 0);
+                    border-radius: 40px;
+                    padding: 20px;
+                    .edit-flex{
+                        display: flex;
+                        align-items: center;
+                        gap: 22px;
+                        .input-flex{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 11px;
+                            input{
+                                width: 260px;
+                                box-sizing: border-box;
+                                border: 2px solid rgb(0, 0, 0);
+                                border-radius: 40px;
+                                padding: 10px 15px;
+                                &::placeholder{
+                                    color: rgb(158, 158, 158);
+                                    font-family: Actay;
+                                    font-size: 16px;
+                                    line-height: 20px;
+                                    letter-spacing: 0%;
+                                    text-align: justify;
+                                }
+
+                            }
+                        }
+                        .input-file{
+                            display: flex;
+                                flex-direction: column;
+                            box-sizing: border-box;
+                            border: 2px solid rgb(0, 0, 0);
+                            border-radius: 30px;
+                            width: 145px;
+                            height: 92px;
+                            input{
+                                
+                            }
+                        }
+                    }
+                    .low-input{
+                        margin-top: 11px;
+                        width: 93%;
+                        height: 50px;
+                        box-sizing: border-box;
+                        border: 2px solid rgb(0, 0, 0);
+                        border-radius: 40px;
+                        padding: 10px 15px;
+                    }
+                    input{
+                        font-size: 24px;
+                    }
+                }
+                .previewPanel{
+                    .card{
+                        transform: translateX(-30px);
+                        display: flex;
+                        flex-direction: column;
+                        width: 643.35px;
+                        height: 426.91px;
+                        gap: 2.12vw;
+                        background-color: #F9F9F9;
+            
+                        padding: 20px;
+                        border-bottom: 10px solid rgb(0, 0, 0);
+                        border-left: 2px solid rgb(0, 0, 0);
+                        border-right: 2px solid rgb(0, 0, 0);
+                        border-top: 2px solid rgb(0, 0, 0);
+                        border-radius: 43px;
+            
+                        &>div:first-child{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 7.23vw;
+            
+                            &>div:first-child{
+                                width: 257px;
+                                height: 257px; 
+                                border: #000 solid 2px;
+                                border-radius: 13%;
+                                img{
+                                     height: 100%;
+                                     width: 100%;
+                                }
+                            }
+                            &>div:last-child{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                align-items: center;
+            
+                                &>div:first-child{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+            
+                                    .img{
+                                        width: 64px;
+                                        height: 64px;
+                                        img{
+                                            height: 100%;
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                                &>p{
+                                    font-size: 3rem;
+                                    font-weight: 700;
+                                    line-height: 61px;
+                                    height: 100%;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                                &>button{
+                                    padding: 15px 34px;
+                                    background-color: #7BFF5A;
+
+                                    border-radius: 40px;
+                                    border: #7BFF5A solid 2px;
+            
+                                    color: #F9F9F9;
+                                    font-size: 1.5rem;
+                                    box-sizing: border-box;
+            
+                                    &:hover{
+                                        box-shadow: 0px 5px 20px 0px rgb(123, 255, 90);
+                                    }
+                                    &:active{
+                                        border: #000 solid 2px;
+                                    }
+                                }
+                            }
+                        }
+                        &>div:last-child{
+                            font-size: 1.5rem;
+                            font-weight: 400;
+                            line-height: 30px;
+                        }
+                        .footer-card{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            span{
+                                font-size: 20PX;
+                            }
+                            div{
+                                display: flex;
+                                flex-direction: column;
+                            }
+                        }
+                    }
+                }
+            }
+            .formEdit{
+                box-sizing: border-box;
+                border-bottom: 20px solid rgb(0, 0, 0);
+                border-left: 2px solid rgb(0, 0, 0);
+                border-right: 2px solid rgb(0, 0, 0);
+                border-top: 2px solid rgb(0, 0, 0);
+                border-radius: 40px;
+                .line{
+                    border: 1px solid black;
+                    width: 100%;
+                }
+                .oneForm{
+                    padding: 15px 40px;
+                    input{
+                        font-size: 24PX;
+                        border: none;
+                        width: 1000px;
+                        &:placeholder{
+                            font-family: 'Actay';
+                        }
+                    }
+                    p{
+                        font-family: Actay-Wait;
+                    }
+                }
+                .btn-store{
+                    margin: 15px 30px;
+                    border: 1px solid transparent;
+                    &:hover{
+                        border: 1px solid #54AE3E ;
+                    }
+                }
             }
         }
     }

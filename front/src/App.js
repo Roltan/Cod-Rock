@@ -13,6 +13,9 @@ import Catalog from "./pages/Catalog";
 import GetPvz from './components/GetPvz';
 import AppContext from "./context";
 import Edit from './pages/Edit';
+import PesrsonalUser from './pages/PersonalUser';
+import PesrsonalProducer from './pages/PersonalProducer';
+
 
 function App() {
   const[items, setItems] = React.useState([])
@@ -105,6 +108,8 @@ function App() {
             <Route path="/register" element={<Registration token={token} />} />
             <Route path='/galary' element={<Catalog items={items} onAddToCart={onAddToCart} token={token} />}/>
             <Route path='/edit' element={<Edit token={token} />}/>
+            <Route path='/user' element={<PesrsonalUser  />}/>
+            <Route path='/producer' element={<PesrsonalProducer  />}/>
             {/* <Route path="/decoration" element={<Accept token={token} />} /> */}
           </Routes>
         </BrowserRouter>

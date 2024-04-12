@@ -52,7 +52,7 @@ const Card = ({id, name, photo, price, size, mass, description, producer, onPlus
                     </div>
                 </div>
                 <div>
-                    <p>Название {name} {mass} {description},{mass} кг, {size}</p>
+                    <p>Название {name}, {mass}, {description}, {mass} кг, {size}</p>
                     <p>Продано 0</p>
                 </div>
             </div>

@@ -5,24 +5,7 @@ import AppContext from "../context";
 
 const Header = (props) => {
     const {profileData} = React.useContext(AppContext)
-    function logMeOut() {
-        axios({
-            method: "POST",
-            url:"http://127.0.0.1:3001/logout",
-        })
-        .then((response) => {
-            props.token()
-            console.log(props.token())
-            localStorage.removeItem('email')
-        }).catch((error) => {
-            if (error.response) {
-                console.log(error.response)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            }
-        })
-        window.location.reload()
-    }
+   
     return ( 
         <>
             {profileData.profile_role == 'гость' ?
@@ -32,7 +15,7 @@ const Header = (props) => {
                         <img src="../img/logo.svg" alt="" />
                     </div>
                     <a href="">о нас</a>
-                    <a href="">каталог</a>
+                    <Link to='/galary'>каталог</Link>
                 </div>
                 <div class="noAuth">
                     <Link to='/login'>
@@ -50,30 +33,14 @@ const Header = (props) => {
                             <img src="../img/logo.svg" alt="shop" />
                         </div>
                         <a href="">о нас</a>
-                        <a href="">каталог</a>
+                        <Link to='/galary'>каталог</Link>
                     </div>
                     <div class="Auth">
                         <span>Привет, продовец!</span>
-                        <a href="">
+                        <Link to='/producer'>
                             <img src="../img/shop.svg" alt="shop" />
-                        </a>
+                        </Link>
                     </div>
-                    {/* <button onClick={logMeOut}>Выйти</button>
-                    <Link to='/addstuff'>
-                        <button>добавить товар</button>
-                    </Link>
-                    <Link to='/addstore'>
-                        <button>добавить склад</button>
-                    </Link>
-                    <Link to='/addpvz'>
-                        <button>добавить пвз</button>
-                    </Link>
-                    <Link to='/galary'>
-                        <button>каталог</button>
-                    </Link>
-                    <Link to='/edit'>
-                        <button>Панель управления</button>
-                    </Link> */}
                 </header>
             ) : (
                 <header>
@@ -82,16 +49,13 @@ const Header = (props) => {
                             <img src="../img/logo.svg" alt="logotype" />
                         </div>
                         <a href="">о нас</a>
-                        <a href="">каталог</a>
+                        <Link to='/galary'>каталог</Link>
                     </div>
                     <div class="Auth">
                         <span>Привет, пользователь!</span>
-                        <button onClick={logMeOut}>
-                            Выход
-                        </button>
-                        <a href="">
+                        <Link to='/user'>
                             <img src="../img/User.svg" alt="user" />
-                        </a>
+                        </Link>
                         <a href="">
                             <img src="../img/Cart.svg" alt="cart" />
                         </a>

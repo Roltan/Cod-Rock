@@ -80,7 +80,7 @@ const Registration = () => {
             })
             alert('Успешно зарегистрирован')
             setToken(req.data.access_token)
-            localStorage.setItem('email', registerForm.name)
+            localStorage.setItem('name', registerForm.name)
             navigate('/galary')
             window.location.reload()
         } catch (error) {
