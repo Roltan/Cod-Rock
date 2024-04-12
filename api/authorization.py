@@ -92,7 +92,7 @@ def Logout():
 
 # тестовый запрос
 # вывод одного пользователя
-@api.route('/user', methods=["GET"])
+@api.route('/user')
 @jwt_required()
 def My_profile():
     name = get_jwt()["sub"]
@@ -101,7 +101,7 @@ def My_profile():
         user = User.query.filter_by(name=name).first()
     elif role == 'producer':
         user = Producer.query.filter_by(name=name).first()
-        
+
     resp = {
         "id": user.id,
         "name": user.name,

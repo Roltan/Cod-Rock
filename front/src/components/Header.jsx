@@ -1,10 +1,9 @@
 import axios from "axios";
 import React from 'react'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import AppContext from "../context";
 
 const Header = (props) => {
-    const Navigate = useNavigate();
     const {profileData} = React.useContext(AppContext)
     function logMeOut() {
         axios({
@@ -15,7 +14,6 @@ const Header = (props) => {
             props.token()
             console.log(props.token())
             localStorage.removeItem('email')
-            Navigate("/");
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response)
@@ -24,24 +22,43 @@ const Header = (props) => {
             }
         })
         window.location.reload()
-        }
-    const logged = localStorage.getItem('email')
-
+    }
     return ( 
-        <div>
-            Шапка сайта 
+        <>
             {profileData.profile_role == 'гость' ?
-            (<>
-                <Link to='/login'>
-                    <button>Войти</button>
-                </Link>
-                <Link to='/register'>
-                    <button>Зарегаться</button>
-                </Link>
-            </>)
+            (<header>
+                 <div>
+                    <div class="logo">
+                        <img src="../img/logo.svg" alt="" />
+                    </div>
+                    <a href="">о нас</a>
+                    <a href="">каталог</a>
+                </div>
+                <div class="noAuth">
+                    <Link to='/login'>
+                        <a href="">ВХОД</a>
+                    </Link>
+                    <Link to='/register'>
+                        <a href="">РЕГИСТРАЦИЯ</a>
+                    </Link>
+                </div>
+            </header>)
             : profileData.profile_role == 'producer' ? (
-                <>
-                    <button onClick={logMeOut}>Выйти</button>
+                <header>
+                    <div>
+                        <div class="logo">
+                            <img src="../img/logo.svg" alt="shop" />
+                        </div>
+                        <a href="">о нас</a>
+                        <a href="">каталог</a>
+                    </div>
+                    <div class="Auth">
+                        <span>Привет, продовец!</span>
+                        <a href="">
+                            <img src="../img/shop.svg" alt="shop" />
+                        </a>
+                    </div>
+                    {/* <button onClick={logMeOut}>Выйти</button>
                     <Link to='/addstuff'>
                         <button>добавить товар</button>
                     </Link>
@@ -56,19 +73,37 @@ const Header = (props) => {
                     </Link>
                     <Link to='/edit'>
                         <button>Панель управления</button>
-                    </Link>
-                 </>
+                    </Link> */}
+                </header>
             ) : (
-                <>
-                    <button onClick={logMeOut}>Выйти</button>
+                <header>
+                    <div>
+                        <div class="logo">
+                            <img src="../img/logo.svg" alt="logotype" />
+                        </div>
+                        <a href="">о нас</a>
+                        <a href="">каталог</a>
+                    </div>
+                    <div class="Auth">
+                        <span>Привет, пользователь!</span>
+                        <button onClick={logMeOut}>
+                            Выход
+                        </button>
+                        <a href="">
+                            <img src="../img/User.svg" alt="user" />
+                        </a>
+                        <a href="">
+                            <img src="../img/Cart.svg" alt="cart" />
+                        </a>
+                    </div>
+                    {/* <button onClick={logMeOut}>Выйти</button>
                     <Link to='/galary'>
                         <button>каталог</button>
-                    </Link>
-                 </>
+                    </Link> */}
+                 </header>
             )
             }
-                
-        </div>
+        </>
      );
 }
  

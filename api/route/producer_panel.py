@@ -74,13 +74,12 @@ def PatchStuff(stuff):
 
         # удалил старую
         lastName = query.photo
-        path = '../front/public' + lastName
-        print(path)
+        path = '../front/public/' + lastName
+        # print(path)
         os.remove(path)
 
         # добавил новую
         path = '../front/public/img/stuff/' + photoFile.filename
-        # print(photoFile)
         photoFile.save(path)
         os.rename(path, '../front/public/img/stuff/'+photoName)
         query.photo = '/img/stuff/'+photoName
@@ -234,7 +233,6 @@ def DelPVZ(pvz):
     # на вход можно и id и имя
     try:
         int(pvz)
-        print(pvz)
         query = PVZ.query.filter_by(id=pvz).first()
     except:
         query = PVZ.query.filter_by(name=pvz).first()
