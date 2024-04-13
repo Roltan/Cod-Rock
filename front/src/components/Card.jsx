@@ -48,7 +48,7 @@ const Card = ({id, name, photo, price, size, mass, description, producer, onPlus
                             <p>Продовец {producer}</p>
                         </div>
                         <p>{price} р.</p>
-                        <button>Купить</button>
+                        <button onClick={onClickCart}>Купить</button>
                     </div>
                 </div>
                 <div>

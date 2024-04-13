@@ -47,8 +47,10 @@ const PersonalUser = (props) => {
                 <div>
                     <div class="userFunc">
                         <div>
-                            <img src="../img/pack.svg" alt="pack"/>
-                            <p>Мои покупки</p>
+                            <Link to='/cart'>
+                                <img src="../img/pack.svg" alt="pack"/>
+                                <p>Мои покупки</p>
+                            </Link>
                         </div>
                         <div>
                             <img src="../img/star.svg" alt="star"/>

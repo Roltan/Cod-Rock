@@ -7,7 +7,7 @@
     src: url(../fonts/Actay/ActayWide-Bold.otf);
 }
 
-@import '_cart.scss'
+@import '_cart.scss';
 *{
     margin: 0;
     padding: 0;
@@ -55,9 +55,6 @@ header{
     >div:first-child{
         gap: 2.34vw;
 
-        a:last-child{
-            
-        }
         a{
             &:hover{
                 color: #7BFF5A;
@@ -1151,9 +1148,6 @@ header{
                             border-radius: 30px;
                             width: 145px;
                             height: 92px;
-                            input{
-                                
-                            }
                         }
                     }
                     .low-input{
@@ -1270,8 +1264,6 @@ header{
                     }
                 }
             }
-            .formEdit{
-}
 
 .cart{
     margin-top: 30px;

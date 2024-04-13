@@ -25,40 +25,64 @@ const MinDistanceComponent = ({ data, id, pvz, token}) => {
     }
   }
   return(
-    <div>
-      <h2>Минимальное расстояние</h2>
+    <>
+    {console.log(data.length)}
       {data.map((item, index) => (
         <div key={index}>
-          {console.log(item.distance)}
-          <p>Список городов: {item.wayList.join(', ')}</p>
-          <p>Расстояние: {item.distance}</p>
-          <p>Конечный город: {item.final_city}</p>
-          <p>Начальный город: {item.initial_city}</p>
-          <p>Цена: {item.price}</p>
-          <p>Время: {item.time}</p>
-          <button onClick={() => acceptOrder(id, pvz, item.storhous, item.initial_city, item.final_city, item.way)}>Выбрать этот путь</button>
+          <div>
+            <p>
+                <span>Список городов</span>
+                <span>{item.wayList.join(', ')}</span>
+            </p>
+            <p>
+                <span>Расстояние</span>
+                <span>{item.distance} км</span>
+            </p>
+            <p>
+                <span>Цена доставки</span>
+                <span>{item.price} р</span>
+            </p>
+          </div>
+          <div>
+          {/* <button onClick={() => acceptOrder(id, pvz, item.storhous, item.initial_city, item.final_city, item.way)}>Выбрать этот путь</button> */}
+              <input type="checkbox" name="" id="dist" />
+              <label for="dist"><div></div></label>
+          </div>
         </div>
       ))}
-    </div>
+    </>
   )
 }
   
 const MinPriceComponent = ({ data, id, pvz}) => {
   console.log(data)
   return(
-    <div>
-      <h2>Минимальная цена</h2>
+    <>
+    {console.log(data.length)}
       {data.map((item, index) => (
         <div key={index}>
-          <p>Список городов: {item.wayList.join(', ')}</p>
-          <p>Расстояние: {item.distance}</p>
-          <p>Конечный город: {item.final_city}</p>
-          <p>Начальный город: {item.initial_city}</p>
-          <p>Цена: {item.price}</p>
-          <p>Время: {item.time}</p>
+          <div>
+            <p>
+                <span>Список городов</span>
+                <span>{item.wayList.join(', ')}</span>
+            </p>
+            <p>
+                <span>Расстояние</span>
+                <span>{item.distance} км</span>
+            </p>
+            <p>
+                <span>Цена доставки</span>
+                <span>{item.price} р</span>
+            </p>
+          </div>
+          <div>
+          {/* <button onClick={() => acceptOrder(id, pvz, item.storhous, item.initial_city, item.final_city, item.way)}>Выбрать этот путь</button> */}
+              <input type="checkbox" name="" id="dist" />
+              <label for="dist"><div></div></label>
+          </div>
         </div>
       ))}
-    </div>
+    </>
   )
 }
 

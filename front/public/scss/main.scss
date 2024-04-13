@@ -6,6 +6,7 @@
     font-family: Actay-Wait;
     src: url(../fonts/Actay/ActayWide-Bold.otf);
 }
+@import './cart';
 *{
     margin: 0;
     padding: 0;
@@ -1447,4 +1448,25 @@ header{
 }
 .cup{
     cursor: pointer;
+}
+.offer{
+    button{
+        text-align: center;
+        background-color: #7BFF5A;
+        padding: 10px;
+        border-radius: 15px !important;
+        color: white;
+        border: 1px solid transparent;
+        transition: .3s;
+        &:hover{
+            border: 1px solid #54AE3E;
+        }
+        &:active{
+            background-color: #54AE3E;
+        }
+    }
+}
+.continue{
+    border: 2px solid black !important;
+    color: black !important;
 }

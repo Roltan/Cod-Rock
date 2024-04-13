@@ -14,6 +14,7 @@ import Main from './pages/Main';
 import PesrsonalUser from './pages/PersonalUser';
 import PesrsonalProducer from './pages/PersonalProducer';
 import Add from './pages/Add';
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -105,6 +106,7 @@ function App() {
             <Route path='/edit' element={<Edit />}/>
             <Route path='/user' element={<PesrsonalUser />}/>
             <Route path='/producer' element={<PesrsonalProducer />}/>
+            <Route path='/cart' element={<Cart />}/>
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>
