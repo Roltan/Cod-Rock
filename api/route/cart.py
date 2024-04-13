@@ -213,13 +213,13 @@ def GetWay():
         pass
 
     pvz = PVZ.query.filter_by(id=pvz).first()
-    final_city = pvz.city
-    if not final_city:
+    if not pvz:
         resp = {
             "errCode": 3,
             "errString": "нет такого пвз"
         }
         return resp, 404
+    final_city = pvz.city
     
     respWay = []
 
