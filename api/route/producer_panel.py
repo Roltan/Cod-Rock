@@ -74,13 +74,14 @@ def PatchStuff(stuff):
 
         # удалил старую
         lastName = query.photo
-        path = '../front/img/stuff/' + lastName
+        path = '../front/public/' + lastName
+        # print(path)
         os.remove(path)
 
         # добавил новую
-        path = '../front/img/stuff/' + photoFile.filename
+        path = '../front/public/img/stuff/' + photoFile.filename
         photoFile.save(path)
-        os.rename(path, '../front/img/stuff/'+photoName)
+        os.rename(path, '../front/public/img/stuff/'+photoName)
         query.photo = '/img/stuff/'+photoName
 
         patch.append('фото')
@@ -228,7 +229,7 @@ def DelPVZ(pvz):
             "errString": "вы пользователь, вы не можете продовать"
         }, 403
     
-    pvz = 0
+    # pvz = 0
     # на вход можно и id и имя
     try:
         int(pvz)

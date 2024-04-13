@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import Info from './Way'
 import { MinDistanceComponent, MinPriceComponent, MinTimeComponent } from './Way';
 
 const Order = ({address, city, producer, id, token}) => {
-    console.log(token)   
+    // console.log(id)   
     const[isWay, setIsWay] = React.useState(false)
     const[getWay, setGetWay] = React.useState([]);
     const[reqPvz, setReqPvz] = React.useState({
@@ -58,7 +57,6 @@ const Order = ({address, city, producer, id, token}) => {
         car: !prevState.car // Инвертируем значение свойства car
     }));
     };
-    console.log(getWay)
     return ( 
         <div className="overlay">
                 <div className="odrer">
@@ -80,11 +78,11 @@ const Order = ({address, city, producer, id, token}) => {
 
                     <button onClick={clickPvz}>Выбрать этот пункт выдачи</button>
                     {isWay ? 
-                    <>
+                    <> 
                         <div>Сформированные пути</div>
-                        <MinDistanceComponent data={getWay.minDistance} />
-                        <MinPriceComponent data={getWay.minPrice} />
-                        <MinTimeComponent data={getWay.minTime} />
+                        <MinDistanceComponent id={id} data={getWay.minDistance} pvz={reqPvz.pvz} token={token}/>
+                        <MinPriceComponent id={id} data={getWay.minPrice}  pvz={reqPvz.pvz} token={token}/>
+                        <MinTimeComponent id={id} data={getWay.minTime}  pvz={reqPvz.pvz} token={token}/>
                     </>
                          : <div>путь не сформирован</div>}
                 </div>

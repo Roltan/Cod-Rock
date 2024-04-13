@@ -149,6 +149,7 @@ def CreateWay(respWay, storehouse, transport, iter):
 def PrepWay(wayArr, pvz):
     resp = []
     for way in wayArr:
+        print(way)
         iterResp = {
             "pvz": pvz.id,
             "storhous": Storehouse.query.filter((Storehouse.city==way["city"][-1])&(Storehouse.producer==pvz.producer)).first().id,
@@ -156,9 +157,9 @@ def PrepWay(wayArr, pvz):
             "final_city": way["city"][-1],
             "wayList": way["city"],
             "way": '',
-            "time": way.time_way,
-            "price": way.price_way,
-            "distance": way.distance_way,
+            "time": way["time"],
+            "price": way["price"],
+            "distance": way["distance"],
         }
         wayString = ''
         for i in range(len(way["id"])-1):
@@ -212,13 +213,13 @@ def GetWay():
         pass
 
     pvz = PVZ.query.filter_by(id=pvz).first()
-    final_city = pvz.city
-    if not final_city:
+    if not pvz:
         resp = {
             "errCode": 3,
             "errString": "нет такого пвз"
         }
         return resp, 404
+    final_city = pvz.city
     
     respWay = []
 

@@ -3,30 +3,49 @@ import Card from '../../components/Card';
 
 
 
-const Catalog = ({items, onAddToCart, token}) => {
-    // console.log(items)
-    // console.log(token)
-    
-    
+const Catalog = ({items, onAddToCart}) => {
 
-    // const renderItems = () => {
-    //     const allitems = items.date
-    //     console.log(allitems)
-    //     allitems.map((item, index)=>{
-    //         return <Card key={index} {...item} />
-    //     })
-        
-            
-        
-        
-    // }
-    
+    const [searchTerm, setSearchTerm] = React.useState('');
+
+    const handleSearchChange = (event) => {
+      setSearchTerm(event.target.value);
+    };
     return ( 
-        <div>
-            Каталог продуктов
-            {
-                items.map((item, index) => <Card key={index} {...item} token={token} onPlus={(id) => onAddToCart(id)}/>)   
-            }
+        <div class="galary">
+            <div class="header">
+                <div class="search">
+                <input
+                    type="text"
+                    placeholder="Поиск"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+                    <button>
+                        <img src="../img/lens.svg" alt="" />
+                    </button>
+                </div>
+                <div class="sort">
+                    <p>
+                        Сортировать по
+                        <span class="green">популярности</span>
+                    </p>
+                    <div>
+                        <img src="../img/arrowBotom.svg" alt="arrow" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="listStuff">
+
+            {items
+                .filter(item => {
+                return item.name.toLowerCase().includes(searchTerm.toLowerCase()) 
+                })
+                .map((item, index) => (
+                    <Card key={index} {...item} onPlus={(id) => onAddToCart(id)} />
+                ))}
+
+            </div>
         </div>
      );
 }

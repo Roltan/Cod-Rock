@@ -40,7 +40,6 @@ const AddStuff = (props) => {
         formData.append('photo', selectedFile); // assuming stuff.photo is a File object
         // console.log(selectedFile)
         formData.append('photoName', idImg+afterDot); // assuming stuff.photo is a File object
-        console.log(formData)
 
         event.preventDefault()
 
@@ -60,7 +59,7 @@ const AddStuff = (props) => {
             name: filename
         })
         }
-        console.log(getUrl)
+        // console.log(getUrl)
         
     }
     
@@ -73,7 +72,7 @@ const AddStuff = (props) => {
                 <input type="text" placeholder="название" name='name' onChange={handleChange} value={stuff.name}/>
                 фото
                 <input type="file" name='photoFile' onChange={
-                        giveName
+                    giveName
                 }
                 
                 accept="image/png, image/gif, image/jpeg, image/jpg"

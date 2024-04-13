@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="logo">
+                <img src="../img/ЛОГО.png" alt="">
+            </div>
+            <a href="">о нас</a>
+            <a href="">каталог</a>
+        </div>
+        <div class="Auth">
+            <span>Привет, пользователь!</span>
+            <a href="">
+                <img src="../img/User.svg" alt="">
+            </a>
+            <a href="">
+                <img src="../img/Cart.svg" alt="">
+            </a>
+        </div>
+    </header>
+
+    <section class="cart">
+        <h1>Корзина заказов</h1>
+        <div class="hr">
+            <p>
+                Товар
+            </p>
+            <p>
+                Цена
+            </p>
+            <p>
+                Количество
+            </p>
+            <p>
+                Стоимость
+            </p>
+        </div>
+
+        <div class="cardList">
+            <div class="card">
+                <div>
+                    <input type="checkbox" name="" id="checkbox">
+                    <label for="checkbox"></label>
+                </div>
+                <img src="../img/stuff.png" alt="">
+                <div>
+                    <p>Название товара</p>
+                    <p>
+                        <span>масса</span>
+                        <span>размер</span>
+                    </p>
+                    <div class="del">Удалить</div>
+                    <div>
+                        <div class="img"><img src="../img/User.svg" alt=""></div>
+                        <p>Продовец</p>
+                    </div>
+                </div>
+                <p>цена</p>
+                <div>
+                    <input type="number" min="1" max="10" placeholder="1" readonly>
+                    <div class="numberBTN">
+                        <button></button>
+                        <button></button>
+                    </div>
+                </div>
+                
+                <p>сумма</p>
+            </div>
+        </div>
+
+        <footer>
+            <div>
+                <button>Оформить заказ</button>
+                <button>Продолжить покупки</button>
+            </div>
+            <div>
+                <p>итого: 980₽</p>
+                <p class="smoll-p">*без учета доставки</p>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
